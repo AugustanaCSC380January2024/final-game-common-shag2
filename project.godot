@@ -70,3 +70,7 @@ Flashlight_Toggle={
 3d_physics/layer_1="Base Objects"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Sight_Blocker"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
