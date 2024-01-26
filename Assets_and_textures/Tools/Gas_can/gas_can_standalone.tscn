@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cukagy8k26ati"]
+
+[ext_resource type="PackedScene" uid="uid://4mghqsqpxofv" path="res://Assets_and_textures/Tools/Gas_can/scene.gltf" id="1_ecff0"]
+
+[node name="Gas_Can_Standalone" instance=ExtResource("1_ecff0")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7, 0, 1.7)

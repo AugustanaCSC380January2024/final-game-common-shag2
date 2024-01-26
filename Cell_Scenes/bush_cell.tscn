@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bieapcvqpxiwm"]
+
+[ext_resource type="PackedScene" uid="uid://cvw6u47iu3v3r" path="res://Assets_and_textures/Landscape/Bushes/Hi_Bush.gltf" id="1_tr0ji"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy5fd"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rlob"]
+material = SubResource("StandardMaterial3D_uy5fd")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6jah4"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wq2gf"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[node name="Bush_Cell" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_uy5fd")
+mesh = SubResource("BoxMesh_4rlob")
+
+[node name="Bush" parent="." instance=ExtResource("1_tr0ji")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.016, 107.5, 1.251)
+
+[node name="Blocker" type="Area3D" parent="Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2964, 0)
+disable_mode = 1
+
+[node name="Sight_Blocker_Collidor" type="CollisionShape3D" parent="Bush/Blocker"]
+shape = SubResource("CylinderShape3D_6jah4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wq2gf")

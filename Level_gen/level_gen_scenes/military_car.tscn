@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck8hvv2dijc0i"]
+
+[ext_resource type="PackedScene" uid="uid://bumg8rn0m5nj2" path="res://Assets_and_textures/Obstacles/Military_Car/Military_Car.gltf" id="1_sm8pu"]
+
+[node name="Military_Car" instance=ExtResource("1_sm8pu")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 2.13, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg83i6q42a0pw"]
+
+[ext_resource type="PackedScene" uid="uid://d0mpwr4s6r63o" path="res://Assets_and_textures/Tools/Health_Kit/healthkit_scene.gltf" id="1_ymyeo"]
+
+[node name="healthkit_scene" instance=ExtResource("1_ymyeo")]
+
+[node name="medkit_medkit_0" parent="Sketchfab_model/eb0dabb7eecb412e91595954162b8a88_fbx/RootNode/medkit" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

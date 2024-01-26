@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://4k8374vs107s"]
+
+[ext_resource type="Script" path="res://First_Person_Package/fps_controller/abilities/flashlight/flashlight.gd" id="1_fnew7"]
+[ext_resource type="AudioStream" uid="uid://cbkeoey8jjh4i" path="res://First_Person_Package/fps_controller/abilities/flashlight/audio/flashlight_toggle.wav" id="2_tbjt4"]
+
+[node name="Flashlight" type="SpotLight3D"]
+light_color = Color(1, 0.901961, 0.8, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 30.0
+script = ExtResource("1_fnew7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+light_color = Color(1, 0.901961, 0.8, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 20.0
+
+[node name="FlashlightToggleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tbjt4")
+volume_db = -10.0
+max_polyphony = 100

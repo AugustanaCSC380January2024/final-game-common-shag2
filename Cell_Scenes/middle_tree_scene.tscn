@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://em5oaxyframp"]
+
+[ext_resource type="PackedScene" uid="uid://bne5hspuiophi" path="res://Assets_and_textures/Landscape/Trees/Oak_Trees/Oak_Tree_scene.gltf" id="1_121i1"]
+
+[node name="Middle_Tree_Scene" instance=ExtResource("1_121i1")]
+
+[node name="structure_001_4" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
+visible = false
+
+[node name="Object_11" parent="Sketchfab_model/root/GLTF_SceneRootNode/structure_001_4" index="0"]
+visible = false
+
+[node name="foliage_001_5" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="3"]
+visible = false
+
+[node name="Object_13" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_001_5" index="0"]
+visible = false
+
+[node name="Object_14" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_001_5" index="1"]
+visible = false
+
+[node name="structure_002_6" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="4"]
+visible = false
+
+[node name="Object_16" parent="Sketchfab_model/root/GLTF_SceneRootNode/structure_002_6" index="0"]
+visible = false
+
+[node name="foliage_002_7" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="5"]
+visible = false
+
+[node name="Object_18" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_002_7" index="0"]
+visible = false
+
+[node name="Object_19" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_002_7" index="1"]
+visible = false
+
+[node name="Object_20" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_002_7" index="2"]
+visible = false
+
+[node name="Object_21" parent="Sketchfab_model/root/GLTF_SceneRootNode/foliage_002_7" index="3"]
+visible = false

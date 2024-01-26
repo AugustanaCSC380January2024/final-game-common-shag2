@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ku55c5ep277"]
+
+[ext_resource type="PackedScene" uid="uid://vxe3kuoytyms" path="res://Cell_Scenes/middle_tree_cell.tscn" id="1_adxa7"]
+
+[node name="Level_Gen_Tree_Scene" type="Node3D"]
+
+[node name="Middle_Tree_Cell" parent="." instance=ExtResource("1_adxa7")]

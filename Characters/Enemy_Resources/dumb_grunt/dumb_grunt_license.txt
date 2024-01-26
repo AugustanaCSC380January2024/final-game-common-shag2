@@ -1,0 +1,11 @@
+Model Information:
+* title:	WW2 Soviet Uniform
+* source:	https://sketchfab.com/3d-models/ww2-soviet-uniform-f85a4ed8c33a43eca1a7caa45f7acf99
+* author:	tnnv (https://sketchfab.com/tnnv)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "WW2 Soviet Uniform" (https://sketchfab.com/3d-models/ww2-soviet-uniform-f85a4ed8c33a43eca1a7caa45f7acf99) by tnnv (https://sketchfab.com/tnnv) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

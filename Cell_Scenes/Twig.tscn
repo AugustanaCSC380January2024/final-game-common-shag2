@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6hfd2lilf4g"]
+
+[ext_resource type="PackedScene" uid="uid://chiiinc5xafl8" path="res://Assets_and_textures/Landscape/Twigs/twig_01_scene.gltf" id="1_ovp7c"]
+
+[node name="Twig" instance=ExtResource("1_ovp7c")]

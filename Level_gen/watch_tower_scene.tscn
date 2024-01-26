@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ejdqqkiehl7g"]
+
+[ext_resource type="PackedScene" uid="uid://c4g8thtv3qcmv" path="res://Assets_and_textures/BuildIngs/WatchTower/WatchTower_scene.gltf" id="1_kekqu"]
+
+[node name="WatchTower_scene" instance=ExtResource("1_kekqu")]
+transform = Transform3D(0.019, 0, 0, 0, 0.019, 0, 0, 0, 0.019, 0, 0, 0)

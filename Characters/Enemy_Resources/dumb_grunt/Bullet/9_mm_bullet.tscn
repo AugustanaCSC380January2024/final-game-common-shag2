@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://croga7shem1ub"]
+
+[ext_resource type="PackedScene" uid="uid://ca5e81tuf22d0" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/bullet_9mm_scene.gltf" id="1_hqkim"]
+[ext_resource type="Script" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/9_mm_bullet.gd" id="2_5mldv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3b0cc"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[node name="9mm_bullet" instance=ExtResource("1_hqkim")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("2_5mldv")
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
+
+[node name="Bullet_Area" type="Area3D" parent="." index="1" groups=["bullet_area_collidor"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet_Area" index="0"]
+shape = SubResource("BoxShape3D_3b0cc")

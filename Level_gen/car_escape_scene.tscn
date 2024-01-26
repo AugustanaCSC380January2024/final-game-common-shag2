@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfbwcp8k0ixua"]
+
+[ext_resource type="PackedScene" uid="uid://ck8hvv2dijc0i" path="res://Level_gen/level_gen_scenes/military_car.tscn" id="1_lpvhj"]
+[ext_resource type="Script" path="res://Level_gen/car_escape_scene.gd" id="1_pn7fc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_733vs"]
+size = Vector3(12, 10, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r5abv"]
+size = Vector3(10, 9, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4ahkj"]
+data = PackedVector3Array(-5, 4.5, 10, 5, 4.5, 10, -5, -4.5, 10, 5, 4.5, 10, 5, -4.5, 10, -5, -4.5, 10, 5, 4.5, -10, -5, 4.5, -10, 5, -4.5, -10, -5, 4.5, -10, -5, -4.5, -10, 5, -4.5, -10, 5, 4.5, 10, 5, 4.5, -10, 5, -4.5, 10, 5, 4.5, -10, 5, -4.5, -10, 5, -4.5, 10, -5, 4.5, -10, -5, 4.5, 10, -5, -4.5, -10, -5, 4.5, 10, -5, -4.5, 10, -5, -4.5, -10, 5, 4.5, 10, -5, 4.5, 10, 5, 4.5, -10, -5, 4.5, 10, -5, 4.5, -10, 5, 4.5, -10, -5, -4.5, 10, 5, -4.5, 10, -5, -4.5, -10, 5, -4.5, 10, 5, -4.5, -10, -5, -4.5, -10)
+
+[node name="Car Escape Scene" type="Node3D"]
+script = ExtResource("1_pn7fc")
+num_gas_cans_to_win = 5
+
+[node name="Military_Car" parent="." instance=ExtResource("1_lpvhj")]
+
+[node name="Interactable" type="Area3D" parent="." groups=["interact"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_733vs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4)
+visible = false
+mesh = SubResource("BoxMesh_r5abv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ahkj")
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_interactable_body_entered"]

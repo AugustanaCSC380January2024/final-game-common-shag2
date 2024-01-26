@@ -1,0 +1,11 @@
+Model Information:
+* title:	Twig
+* source:	https://sketchfab.com/3d-models/twig-747011772e8346ffbb3162416c5f9122
+* author:	amanda_98 (https://sketchfab.com/amanda_98)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Twig" (https://sketchfab.com/3d-models/twig-747011772e8346ffbb3162416c5f9122) by amanda_98 (https://sketchfab.com/amanda_98) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbc8826bhsmin"]
+
+[ext_resource type="PackedScene" uid="uid://b5e88jnvh3icc" path="res://Characters/Enemy_Resources/dumb_grunt/Lebedev Pistol/Lebedev_Pistol_Scene.gltf" id="1_6l1p3"]
+
+[node name="Lebedev_Pistol" instance=ExtResource("1_6l1p3")]

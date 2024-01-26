@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7fkqrghlgvno"]
+
+[ext_resource type="PackedScene" uid="uid://cmd76ublwlmf" path="res://Cell_Scenes/twig_cell.tscn" id="1_l6qer"]
+
+[node name="LevelGenTwigs" type="Node3D"]
+
+[node name="Twig_Cell" parent="." instance=ExtResource("1_l6qer")]

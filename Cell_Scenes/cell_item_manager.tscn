@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3v1vhjrpaka7"]
+
+[ext_resource type="Script" path="res://World_Scripts/Cell_Item_Manager.gd" id="1_nxqig"]
+[ext_resource type="PackedScene" uid="uid://bbctmvu3rw4t2" path="res://Cell_Scenes/cell_with_item.tscn" id="2_q3o67"]
+
+[node name="Cell_Item_Manager" type="Node"]
+script = ExtResource("1_nxqig")
+
+[node name="Cell_With_Item" parent="." instance=ExtResource("2_q3o67")]

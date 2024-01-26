@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cys7w0ho7nt42"]
+
+[ext_resource type="PackedScene" uid="uid://v4juqfncj0ux" path="res://Assets_and_textures/Weapons/AK2OBJ/scene.gltf" id="1_dugsk"]
+
+[node name="AKOBJ" instance=ExtResource("1_dugsk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77785, 0, 0)

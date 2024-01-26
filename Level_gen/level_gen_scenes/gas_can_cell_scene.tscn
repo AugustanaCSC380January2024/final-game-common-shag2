@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://caa2tr8h0m6o1"]
+
+[ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_o7a64"]
+[ext_resource type="Script" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.gd" id="1_okyno"]
+[ext_resource type="PackedScene" uid="uid://4mghqsqpxofv" path="res://Assets_and_textures/Tools/Gas_can/scene.gltf" id="2_eee1y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubmjl"]
+material = SubResource("StandardMaterial3D_3pnyy")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_plo82"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8akas"]
+size = Vector3(5, 4, 8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8sbnn"]
+data = PackedVector3Array(-2.5, 2, 4, 2.5, 2, 4, -2.5, -2, 4, 2.5, 2, 4, 2.5, -2, 4, -2.5, -2, 4, 2.5, 2, -4, -2.5, 2, -4, 2.5, -2, -4, -2.5, 2, -4, -2.5, -2, -4, 2.5, -2, -4, 2.5, 2, 4, 2.5, 2, -4, 2.5, -2, 4, 2.5, 2, -4, 2.5, -2, -4, 2.5, -2, 4, -2.5, 2, -4, -2.5, 2, 4, -2.5, -2, -4, -2.5, 2, 4, -2.5, -2, 4, -2.5, -2, -4, 2.5, 2, 4, -2.5, 2, 4, 2.5, 2, -4, -2.5, 2, 4, -2.5, 2, -4, 2.5, 2, -4, -2.5, -2, 4, 2.5, -2, 4, -2.5, -2, -4, 2.5, -2, 4, 2.5, -2, -4, -2.5, -2, -4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8enk1"]
+size = Vector3(50, 25, 50)
+
+[node name="Gas_Can_Cell_Scene" type="Node3D"]
+script = ExtResource("1_okyno")
+
+[node name="Gas_Can_Cell" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ubmjl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gas_Can_Cell"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_plo82")
+
+[node name="Wooden_Box" parent="Gas_Can_Cell" instance=ExtResource("1_o7a64")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.404, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gas_Can_Cell/Wooden_Box"]
+visible = false
+mesh = SubResource("BoxMesh_8akas")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gas_Can_Cell/Wooden_Box/MeshInstance3D"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/Wooden_Box/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8sbnn")
+
+[node name="Gas_Can" parent="Gas_Can_Cell" instance=ExtResource("2_eee1y")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.59455, 2.25826, 1.71778)
+
+[node name="Pick_Up_Area" type="Area3D" parent="Gas_Can_Cell/Gas_Can" groups=["gas_can_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1965, 4.43796, -8.53872)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/Gas_Can/Pick_Up_Area"]
+shape = SubResource("BoxShape3D_8enk1")
+
+[connection signal="body_entered" from="Gas_Can_Cell/Gas_Can/Pick_Up_Area" to="." method="_on_pick_up_area_body_entered"]

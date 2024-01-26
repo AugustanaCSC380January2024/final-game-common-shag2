@@ -1,0 +1,11 @@
+Model Information:
+* title:	Quad Night Vision Goggle
+* source:	https://sketchfab.com/3d-models/quad-night-vision-goggle-632dac677c02447abf205f503c50613e
+* author:	VassKacsoHunor (https://sketchfab.com/VassKacsoHunor)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Quad Night Vision Goggle" (https://sketchfab.com/3d-models/quad-night-vision-goggle-632dac677c02447abf205f503c50613e) by VassKacsoHunor (https://sketchfab.com/VassKacsoHunor) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

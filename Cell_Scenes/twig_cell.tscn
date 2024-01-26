@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmd76ublwlmf"]
+
+[ext_resource type="PackedScene" uid="uid://dw6hfd2lilf4g" path="res://Cell_Scenes/Twig.tscn" id="1_8y28f"]
+[ext_resource type="Script" path="res://Cell_Scenes/twig_cell.gd" id="1_wct5f"]
+[ext_resource type="AudioStream" uid="uid://dvhymtfr4k6nk" path="res://Assets_and_textures/Audio/stick-snap-audio.mp3" id="3_jsy0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy5fd"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbkbt"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4fgy"]
+material = SubResource("StandardMaterial3D_sbkbt")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qnvig"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mtob"]
+size = Vector3(10, 1, 10)
+
+[node name="Twig_Cell" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_uy5fd")
+mesh = SubResource("BoxMesh_c4fgy")
+script = ExtResource("1_wct5f")
+
+[node name="Twig" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+
+[node name="Twig2" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(0.653578, 0, -1.89019, 0, 2, 0, 1.89019, 0, 0.653578, 1.92256, 1, 0)
+
+[node name="Twig3" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(-1.99921, 0, 0.0562622, 0, 2, 0, -0.0562622, 0, -1.99921, 0.240283, 1, -1.81632)
+
+[node name="Twig4" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(-0.938203, 0, 1.76629, 0, 2, 0, -1.76629, 0, -0.938203, 2.44159, 1, 2.41004)
+
+[node name="Twig5" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(1.6585, 0, 1.11775, 0, 2, 0, -1.11775, 0, 1.6585, 3.12687, 1, -0.82993)
+
+[node name="Twig6" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(0.58461, 0, -1.91265, 0, 2, 0, 1.91265, 0, 0.58461, -2.40818, 1, 1.9963)
+
+[node name="Twig7" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(1.93593, 0, -0.502179, 0, 2, 0, 0.502179, 0, 1.93593, -2.40818, 1, -3.0134)
+
+[node name="Twig8" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(1.90344, 0, -0.613949, 0, 2, 0, 0.613949, 0, 1.90344, -2.40818, 1, -0.554987)
+
+[node name="Twig9" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(1.90344, 0, -0.613949, 0, 2, 0, 0.613949, 0, 1.90344, -1.32737, 1, 3.30182)
+
+[node name="Twig10" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(-1.35706, 0, -1.46914, 0, 2, 0, 1.46914, 0, -1.35706, -1.32737, 1, -3.00189)
+
+[node name="Twig11" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(-1.35706, 0, -1.46914, 0, 2, 0, 1.46914, 0, -1.35706, 2.43116, 1, -3.00189)
+
+[node name="Twig12" parent="." instance=ExtResource("1_8y28f")]
+transform = Transform3D(-1.35706, 0, -1.46914, 0, 2, 0, 1.46914, 0, -1.35706, 0.210165, 1, 2.41907)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qnvig")
+
+[node name="Area3D" type="Area3D" parent="." groups=["twig_cell_area"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.969855, 0)
+shape = SubResource("BoxShape3D_5mtob")
+
+[node name="Twig_Snap_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jsy0v")
+volume_db = 5.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

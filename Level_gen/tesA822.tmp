@@ -1,0 +1,56 @@
+[gd_scene load_steps=16 format=3 uid="uid://snqt6qj5h2rt"]
+
+[ext_resource type="Script" path="res://Level_gen/Level_Generation.gd" id="1_c3wlb"]
+[ext_resource type="PackedScene" uid="uid://ejdqqkiehl7g" path="res://Level_gen/watch_tower_scene.tscn" id="2_h4h76"]
+[ext_resource type="PackedScene" uid="uid://2ku55c5ep277" path="res://Level_gen/level_gen_scenes/level_gen_tree_scene.tscn" id="3_cfqxe"]
+[ext_resource type="PackedScene" uid="uid://c7fkqrghlgvno" path="res://Level_gen/level_gen_scenes/level_gen_twigs.tscn" id="4_1tl7d"]
+[ext_resource type="PackedScene" uid="uid://dj2or470kb04m" path="res://Characters/Enemy_Scenes/heavy_soldier.tscn" id="5_f46ef"]
+[ext_resource type="PackedScene" uid="uid://dxp451gridfcw" path="res://Characters/Enemy_Scenes/dumb_grunt.tscn" id="6_d1uh4"]
+[ext_resource type="PackedScene" uid="uid://chag7ux4a1rp3" path="res://Level_gen/level_gen_scenes/level_gen_bush.tscn" id="7_g7kw3"]
+[ext_resource type="PackedScene" uid="uid://b826fqxrcksge" path="res://Level_gen/level_gen_scenes/level_gen_grass.tscn" id="8_dl51n"]
+[ext_resource type="PackedScene" uid="uid://0swvrc55l8j5" path="res://Level_gen/level_gen_scenes/level_gen_empty_cell.tscn" id="9_2mmei"]
+[ext_resource type="PackedScene" uid="uid://caa2tr8h0m6o1" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.tscn" id="10_3q8yp"]
+[ext_resource type="PackedScene" uid="uid://dqvhpe43876vf" path="res://Level_gen/level_gen_scenes/level_gen_health_box.tscn" id="11_4ivf2"]
+[ext_resource type="MeshLibrary" uid="uid://gvtqoqqmmchf" path="res://Mesh_Libraries/level_Gen_Cells_Library_4.tres" id="12_hd31f"]
+[ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="14_3f3nw"]
+[ext_resource type="PackedScene" uid="uid://ck8hvv2dijc0i" path="res://Level_gen/level_gen_scenes/military_car.tscn" id="14_bcpxf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij376"]
+albedo_color = Color(1, 0.2, 1, 1)
+
+[node name="Level_Gen" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 13)
+script = ExtResource("1_c3wlb")
+watchtower = ExtResource("2_h4h76")
+tree_cell = ExtResource("3_cfqxe")
+grass = ExtResource("8_dl51n")
+bush = ExtResource("7_g7kw3")
+twig = ExtResource("4_1tl7d")
+dumb_grunt = ExtResource("6_d1uh4")
+heavy_soldier = ExtResource("5_f46ef")
+empty_cell = ExtResource("9_2mmei")
+gas_can = ExtResource("10_3q8yp")
+health_kit = ExtResource("11_4ivf2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 74, 0)
+light_color = Color(1, 1, 0.462745, 1)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+material_override = SubResource("StandardMaterial3D_ij376")
+snap = 1.0
+use_collision = true
+size = Vector3(200, 1, 200)
+
+[node name="GridMap" type="GridMap" parent="Ground"]
+mesh_library = ExtResource("12_hd31f")
+cell_size = Vector3(10, 2, 10)
+
+[node name="Player" parent="." instance=ExtResource("14_3f3nw")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 8.5943, 0)
+
+[node name="Military_Car" parent="." instance=ExtResource("14_bcpxf")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 7, 2.13, 0)

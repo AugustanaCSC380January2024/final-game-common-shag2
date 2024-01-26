@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b62q8hieexj4c"]
+
+[ext_resource type="Script" path="res://First_Person_Package/fps_controller/abilities/shoot/instances/impact.gd" id="1_noxe0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhn7u"]
+albedo_color = Color(1, 0.901961, 0.8, 1)
+emission_enabled = true
+emission = Color(1, 0.901961, 0.8, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_rqvso"]
+radius = 0.1
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmjaa"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticlesMaterial_0lj0k"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6gxkk"]
+radius = 0.01
+height = 0.02
+
+[node name="Impact" type="Marker3D"]
+script = ExtResource("1_noxe0")
+
+[node name="Flash" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uhn7u")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_rqvso")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_pmjaa")
+explosiveness = 1.0
+process_material = SubResource("ParticlesMaterial_0lj0k")
+draw_pass_1 = SubResource("SphereMesh_6gxkk")

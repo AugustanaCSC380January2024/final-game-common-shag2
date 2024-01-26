@@ -1,0 +1,11 @@
+Model Information:
+* title:	Armored Car
+* source:	https://sketchfab.com/3d-models/armored-car-1a3ffbb3ccea4c42a6cf6e81ca8216d2
+* author:	Fredrik (https://sketchfab.com/kird3rf)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Armored Car" (https://sketchfab.com/3d-models/armored-car-1a3ffbb3ccea4c42a6cf6e81ca8216d2) by Fredrik (https://sketchfab.com/kird3rf) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

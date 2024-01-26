@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7330mhutgc0"]
+
+[ext_resource type="PackedScene" uid="uid://bmebw1wr6hgis" path="res://Assets_and_textures/Tools/FlashLight/flashlight_scene.gltf" id="1_itjy2"]
+
+[node name="Flashlight_Object" instance=ExtResource("1_itjy2")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

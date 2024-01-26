@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv3oxn2t3l2ag"
+path="res://.godot/imported/Star Wars Death Noise.mp3-f6be1684505fdf1e58479aa456d86ef0.mp3str"
+
+[deps]
+
+source_file="res://Characters/Enemy_Scenes/Sound Effects/Star Wars Death Noise.mp3"
+dest_files=["res://.godot/imported/Star Wars Death Noise.mp3-f6be1684505fdf1e58479aa456d86ef0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

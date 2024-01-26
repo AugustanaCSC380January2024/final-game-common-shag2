@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqvhpe43876vf"]
+
+[ext_resource type="Script" path="res://Level_gen/level_gen_scenes/level_gen_health_box.gd" id="1_6kter"]
+[ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_eh4st"]
+[ext_resource type="PackedScene" uid="uid://dg83i6q42a0pw" path="res://Assets_and_textures/Tools/Health_Kit/health_kit_scene.tscn" id="2_pnx68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pv66b"]
+material = SubResource("StandardMaterial3D_3pnyy")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ueq6e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0lt7"]
+size = Vector3(20, 10, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c87e1"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[node name="Level_Gen_Health_Box" type="Node3D"]
+script = ExtResource("1_6kter")
+
+[node name="Cell_With_Item" type="MeshInstance3D" parent="." groups=["item_box_cell"]]
+material_override = SubResource("StandardMaterial3D_3pnyy")
+mesh = SubResource("BoxMesh_pv66b")
+skeleton = NodePath("../..")
+
+[node name="Wooden_Box" parent="Cell_With_Item" instance=ExtResource("1_eh4st")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.40372, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cell_With_Item/Wooden_Box"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cell_With_Item/Wooden_Box/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ueq6e")
+
+[node name="healthkit_scene" parent="Cell_With_Item/Wooden_Box" instance=ExtResource("2_pnx68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="pick_up_area" type="Area3D" parent="Cell_With_Item/Wooden_Box/healthkit_scene" groups=["health_pickup_area"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cell_With_Item/Wooden_Box/healthkit_scene/pick_up_area"]
+shape = SubResource("BoxShape3D_v0lt7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cell_With_Item"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cell_With_Item/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c87e1")
+
+[connection signal="body_entered" from="Cell_With_Item/Wooden_Box/healthkit_scene/pick_up_area" to="." method="_on_pick_up_area_body_entered"]

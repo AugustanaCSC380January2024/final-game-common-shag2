@@ -1,0 +1,1087 @@
+[gd_scene load_steps=31 format=3 uid="uid://depc2i6n8hy2l"]
+
+[ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="1_dpo3y"]
+[ext_resource type="Script" path="res://Levels/Base_Level.gd" id="1_pkf8r"]
+[ext_resource type="PackedScene" uid="uid://bieapcvqpxiwm" path="res://Cell_Scenes/bush_cell.tscn" id="3_huhae"]
+[ext_resource type="PackedScene" uid="uid://70u41wx2clbb" path="res://Cell_Scenes/watch_tower_cell.tscn" id="4_maxcv"]
+[ext_resource type="PackedScene" uid="uid://cmd76ublwlmf" path="res://Cell_Scenes/twig_cell.tscn" id="5_pqbpp"]
+[ext_resource type="PackedScene" uid="uid://dwnkotomljeag" path="res://Cell_Scenes/grass_cell.tscn" id="6_750hl"]
+[ext_resource type="PackedScene" uid="uid://3v1vhjrpaka7" path="res://Cell_Scenes/cell_item_manager.tscn" id="7_2ymb3"]
+[ext_resource type="PackedScene" uid="uid://dxp451gridfcw" path="res://Characters/Enemy_Scenes/dumb_grunt.tscn" id="7_hug7a"]
+[ext_resource type="PackedScene" uid="uid://dj2or470kb04m" path="res://Characters/Enemy_Scenes/heavy_soldier.tscn" id="8_6ytkr"]
+[ext_resource type="PackedScene" uid="uid://bbctmvu3rw4t2" path="res://Cell_Scenes/cell_with_item.tscn" id="8_l2e2u"]
+[ext_resource type="PackedScene" uid="uid://vxe3kuoytyms" path="res://Cell_Scenes/middle_tree_cell.tscn" id="10_654c1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frfgm"]
+albedo_color = Color(0.0980392, 0, 0.0784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy5fd"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dc1qh"]
+material = SubResource("StandardMaterial3D_uy5fd")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gya80"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hgla5"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kdkdf"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_drcn8"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bvlgl"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k441m"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_onmql"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_he6cv"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jqlpv"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6o2my"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a0pgg"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6g3c"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bgr1e"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vpvdq"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e7fhp"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wxxsk"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[node name="First_Level" type="Node3D"]
+script = ExtResource("1_pkf8r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 60, 0)
+light_color = Color(1, 1, 0.462745, 1)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_frfgm")
+snap = 1.0
+use_collision = true
+size = Vector3(400, 0.9, 400)
+
+[node name="Player" parent="." instance=ExtResource("1_dpo3y")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 5.2, 0)
+
+[node name="Empty_Cell_Manager" type="Node3D" parent="."]
+
+[node name="Empty_Cell" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gya80")
+
+[node name="Empty_Cell5" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hgla5")
+
+[node name="Empty_Cell13" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell13/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_kdkdf")
+
+[node name="Empty_Cell29" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 65)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell29"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell29/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_kdkdf")
+
+[node name="Empty_Cell14" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell14/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell31" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 25)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell31"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell31/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell24" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 45)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell24/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell25" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 55)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell25/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell26" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 55)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell26"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell26/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell27" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 55)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell27"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell27/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell28" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 55)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell28"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell28/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_drcn8")
+
+[node name="Empty_Cell15" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell15/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bvlgl")
+
+[node name="Empty_Cell16" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell16/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k441m")
+
+[node name="Empty_Cell35" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, 15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell35"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell35/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k441m")
+
+[node name="Empty_Cell36" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -25)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell36"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell36/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k441m")
+
+[node name="Empty_Cell6" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_onmql")
+
+[node name="Empty_Cell7" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell19" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -35)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell19/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell30" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 35)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell30"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell30/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell32" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, 35)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell32"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell32/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell18" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell18/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell20" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -25)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell20/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_he6cv")
+
+[node name="Empty_Cell8" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell8/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jqlpv")
+
+[node name="Empty_Cell9" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell9/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6o2my")
+
+[node name="Empty_Cell21" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -25)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell21/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6o2my")
+
+[node name="Empty_Cell10" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell10/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell38" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115, 0, -45)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell38"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell38/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell23" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -15)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell23"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell23/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell39" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 45)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell39"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell39/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell33" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, -35)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell33"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell33/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell22" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -35)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell22"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell22/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a0pgg")
+
+[node name="Empty_Cell11" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell11/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6g3c")
+
+[node name="Empty_Cell37" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -55)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell37"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell37/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6g3c")
+
+[node name="Empty_Cell34" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell34"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell34/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6g3c")
+
+[node name="Empty_Cell12" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell12/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bgr1e")
+
+[node name="Empty_Cell3" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vpvdq")
+
+[node name="Empty_Cell4" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e7fhp")
+
+[node name="Empty_Cell2" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wxxsk")
+
+[node name="Empty_Cell17" type="MeshInstance3D" parent="Empty_Cell_Manager" groups=["empty_cell"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 5)
+mesh = SubResource("BoxMesh_dc1qh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Empty_Cell_Manager/Empty_Cell17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Empty_Cell_Manager/Empty_Cell17/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wxxsk")
+
+[node name="Bush_Cell_Manager" type="Node3D" parent="."]
+
+[node name="Bush_Cell" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 25)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell8" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell13" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 65)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell14" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 65)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell15" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 65)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell16" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 65)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell9" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell10" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell11" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell17" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 25)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell12" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 55)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell18" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 55)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell2" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -5)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell25" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell19" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, -5)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell26" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -65)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell23" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -35)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell24" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -45)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell20" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, -15)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell21" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -15)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell22" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -25)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell4" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -5)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell5" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 5)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell6" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 15)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell3" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 15)
+skeleton = NodePath("../..")
+
+[node name="Bush_Cell7" parent="Bush_Cell_Manager" instance=ExtResource("3_huhae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -35)
+skeleton = NodePath("../..")
+
+[node name="Watchtower_Cell_Manager" type="Node3D" parent="."]
+
+[node name="WatchTower_Cell3" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 35)
+
+[node name="WatchTower_Cell4" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, 35)
+
+[node name="WatchTower_Cell5" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 0, -15)
+
+[node name="WatchTower_Cell6" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 0, -45)
+
+[node name="WatchTower_Cell9" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, -45)
+
+[node name="WatchTower_Cell7" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -45)
+
+[node name="WatchTower_Cell10" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -64)
+
+[node name="WatchTower_Cell8" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -45)
+
+[node name="WatchTower_Cell2" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 25)
+
+[node name="WatchTower_Cell" parent="Watchtower_Cell_Manager" instance=ExtResource("4_maxcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 25)
+
+[node name="Twig_Cell_Manager" type="Node3D" parent="."]
+
+[node name="Twig_Cell" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 25)
+
+[node name="Twig_Cell13" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 65)
+
+[node name="Twig_Cell14" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 55)
+
+[node name="Twig_Cell12" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 45)
+
+[node name="Twig_Cell5" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 25)
+
+[node name="Twig_Cell6" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -5)
+
+[node name="Twig_Cell25" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 15)
+
+[node name="Twig_Cell27" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 25)
+
+[node name="Twig_Cell26" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 15)
+
+[node name="Twig_Cell22" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -5)
+
+[node name="Twig_Cell23" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 5)
+
+[node name="Twig_Cell24" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, 5)
+
+[node name="Twig_Cell7" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -25)
+
+[node name="Twig_Cell8" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -45)
+
+[node name="Twig_Cell30" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0, -45)
+
+[node name="Twig_Cell19" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -45)
+
+[node name="Twig_Cell28" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -45)
+
+[node name="Twig_Cell29" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -45)
+
+[node name="Twig_Cell21" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -15)
+
+[node name="Twig_Cell20" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -45)
+
+[node name="Twig_Cell9" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -44)
+
+[node name="Twig_Cell10" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -44)
+
+[node name="Twig_Cell11" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -15)
+
+[node name="Twig_Cell2" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 5)
+
+[node name="Twig_Cell16" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 55)
+
+[node name="Twig_Cell17" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 45)
+
+[node name="Twig_Cell18" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 55)
+
+[node name="Twig_Cell3" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -35)
+
+[node name="Twig_Cell4" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 35)
+
+[node name="Twig_Cell15" parent="Twig_Cell_Manager" instance=ExtResource("5_pqbpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 35)
+
+[node name="Grass_Cell_Manager" type="Node3D" parent="."]
+
+[node name="Grass_Cell" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 25)
+
+[node name="Grass_Cell12" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -25)
+
+[node name="Grass_Cell13" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -35)
+
+[node name="Grass_Cell19" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -35)
+
+[node name="Grass_Cell20" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -25)
+
+[node name="Grass_Cell21" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -25)
+
+[node name="Grass_Cell22" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -35)
+
+[node name="Grass_Cell23" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -35)
+
+[node name="Grass_Cell24" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -25)
+
+[node name="Grass_Cell57" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, -25)
+
+[node name="Grass_Cell58" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -25)
+
+[node name="Grass_Cell74" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 0, -25)
+
+[node name="Grass_Cell75" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 0, -35)
+
+[node name="Grass_Cell25" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25)
+
+[node name="Grass_Cell80" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -55)
+
+[node name="Grass_Cell56" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -35)
+
+[node name="Grass_Cell76" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115, 0, -35)
+
+[node name="Grass_Cell77" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, -35)
+
+[node name="Grass_Cell78" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135, 0, -35)
+
+[node name="Grass_Cell26" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -35)
+
+[node name="Grass_Cell27" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -15)
+
+[node name="Grass_Cell28" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -5)
+
+[node name="Grass_Cell64" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -5)
+
+[node name="Grass_Cell65" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 5)
+
+[node name="Grass_Cell66" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 5)
+
+[node name="Grass_Cell67" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 5)
+
+[node name="Grass_Cell70" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 15)
+
+[node name="Grass_Cell71" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 25)
+
+[node name="Grass_Cell72" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 25)
+
+[node name="Grass_Cell73" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, 25)
+
+[node name="Grass_Cell29" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -5)
+
+[node name="Grass_Cell30" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -15)
+
+[node name="Grass_Cell79" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -55)
+
+[node name="Grass_Cell63" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -15)
+
+[node name="Grass_Cell68" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -15)
+
+[node name="Grass_Cell69" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, 5)
+
+[node name="Grass_Cell31" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -25)
+
+[node name="Grass_Cell32" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -35)
+
+[node name="Grass_Cell59" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, -35)
+
+[node name="Grass_Cell60" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -35)
+
+[node name="Grass_Cell61" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -45)
+
+[node name="Grass_Cell62" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -25)
+
+[node name="Grass_Cell33" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 5)
+
+[node name="Grass_Cell34" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 5)
+
+[node name="Grass_Cell35" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 15)
+
+[node name="Grass_Cell81" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 45)
+
+[node name="Grass_Cell82" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 55)
+
+[node name="Grass_Cell83" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 55)
+
+[node name="Grass_Cell84" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 45)
+
+[node name="Grass_Cell85" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 45)
+
+[node name="Grass_Cell36" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 15)
+
+[node name="Grass_Cell37" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 25)
+
+[node name="Grass_Cell38" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 25)
+
+[node name="Grass_Cell14" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -35)
+
+[node name="Grass_Cell15" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -35)
+
+[node name="Grass_Cell18" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -25)
+
+[node name="Grass_Cell16" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -15)
+
+[node name="Grass_Cell17" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -15)
+
+[node name="Grass_Cell2" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -15)
+
+[node name="Grass_Cell4" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 5)
+
+[node name="Grass_Cell54" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 5)
+
+[node name="Grass_Cell55" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -25)
+
+[node name="Grass_Cell3" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -5)
+
+[node name="Grass_Cell5" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 15)
+
+[node name="Grass_Cell39" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 25)
+
+[node name="Grass_Cell40" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 25)
+
+[node name="Grass_Cell41" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 35)
+
+[node name="Grass_Cell42" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 35)
+
+[node name="Grass_Cell43" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 35)
+
+[node name="Grass_Cell44" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 35)
+
+[node name="Grass_Cell45" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 35)
+
+[node name="Grass_Cell46" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 35)
+
+[node name="Grass_Cell47" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 35)
+
+[node name="Grass_Cell48" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 35)
+
+[node name="Grass_Cell6" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 15)
+
+[node name="Grass_Cell49" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 15)
+
+[node name="Grass_Cell51" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 45)
+
+[node name="Grass_Cell52" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 45)
+
+[node name="Grass_Cell53" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 45)
+
+[node name="Grass_Cell50" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 35)
+
+[node name="Grass_Cell7" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 5)
+
+[node name="Grass_Cell8" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
+
+[node name="Grass_Cell9" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -15)
+
+[node name="Grass_Cell10" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -25)
+
+[node name="Grass_Cell11" parent="Grass_Cell_Manager" instance=ExtResource("6_750hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25)
+
+[node name="Grunt_ Cell_Manager" type="Node3D" parent="."]
+
+[node name="Dumb_Grunt" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(1.40897, 0, -2.64855, 0, 3, 0, 2.64855, 0, 1.40897, 65.4942, 0.5, -36.6834)
+
+[node name="Dumb_Grunt2" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(-1.5, 0, -2.59808, 0, 3, 0, 2.59808, 0, -1.5, 35, 0.5, 65)
+
+[node name="Dumb_Grunt3" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 65, 0.5, 35)
+
+[node name="Dumb_Grunt4" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, 85, 0.5, 35)
+
+[node name="Dumb_Grunt5" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(2.93873, 0, -0.603234, 0, 3, 0, 0.603234, 0, 2.93873, -55, 0.5, -35)
+
+[node name="Dumb_Grunt9" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0.5, -55)
+
+[node name="Dumb_Grunt10" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(2.96705, 0, 0.443428, 0, 3, 0, -0.443428, 0, 2.96705, -115, 0.5, -45)
+
+[node name="Dumb_Grunt7" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(-1.5, 0, 2.59808, 0, 3, 0, -2.59808, 0, -1.5, -95, 0.5, 15)
+
+[node name="Dumb_Grunt8" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, 2.12132, -95, 0.5, -25)
+
+[node name="Dumb_Grunt6" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -85, 0.5, -5)
+
+[node name="Dumb_Grunt11" parent="Grunt_ Cell_Manager" instance=ExtResource("7_hug7a")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -3.49841, 0.5, 17.4529)
+
+[node name="Heavy_Soldier_Cell_Manager" type="Node3D" parent="."]
+
+[node name="Heavy_Soldier" parent="Heavy_Soldier_Cell_Manager" instance=ExtResource("8_6ytkr")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -135, 0, -35)
+
+[node name="Cell_Item_Manager" parent="." instance=ExtResource("7_2ymb3")]
+
+[node name="Cell_With_Item2" parent="Cell_Item_Manager" instance=ExtResource("8_l2e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -5)
+
+[node name="Cell_With_Item4" parent="Cell_Item_Manager" instance=ExtResource("8_l2e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 35)
+
+[node name="Cell_With_Item5" parent="Cell_Item_Manager" instance=ExtResource("8_l2e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115, 0, -15)
+
+[node name="Cell_With_Item6" parent="Cell_Item_Manager" instance=ExtResource("8_l2e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115, 0, -55)
+
+[node name="Cell_With_Item3" parent="Cell_Item_Manager" instance=ExtResource("8_l2e2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 25)
+
+[node name="Tree_Manager" type="Node3D" parent="."]
+
+[node name="Middle_Tree_Cell" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -45)
+
+[node name="Middle_Tree_Cell5" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -45)
+
+[node name="Middle_Tree_Cell6" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -45)
+
+[node name="Middle_Tree_Cell7" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -45)
+
+[node name="Middle_Tree_Cell14" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -45)
+
+[node name="Middle_Tree_Cell15" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -35)
+
+[node name="Middle_Tree_Cell8" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 15)
+
+[node name="Middle_Tree_Cell16" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, 15)
+
+[node name="Middle_Tree_Cell18" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, 25)
+
+[node name="Middle_Tree_Cell17" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -5)
+
+[node name="Middle_Tree_Cell9" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 35)
+
+[node name="Middle_Tree_Cell10" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 65)
+
+[node name="Middle_Tree_Cell11" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 65)
+
+[node name="Middle_Tree_Cell2" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -45)
+
+[node name="Middle_Tree_Cell19" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145, 0, -45)
+
+[node name="Middle_Tree_Cell20" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -65)
+
+[node name="Middle_Tree_Cell3" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 15)
+
+[node name="Middle_Tree_Cell12" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, -5)
+
+[node name="Middle_Tree_Cell13" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -5)
+
+[node name="Middle_Tree_Cell4" parent="Tree_Manager" instance=ExtResource("10_654c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 35)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://deuuei7vxaugg"]
+
+[ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_w2vlt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
+albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubmjl"]
+material = SubResource("StandardMaterial3D_3pnyy")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_plo82"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8akas"]
+size = Vector3(5, 4, 8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8sbnn"]
+data = PackedVector3Array(-2.5, 2, 4, 2.5, 2, 4, -2.5, -2, 4, 2.5, 2, 4, 2.5, -2, 4, -2.5, -2, 4, 2.5, 2, -4, -2.5, 2, -4, 2.5, -2, -4, -2.5, 2, -4, -2.5, -2, -4, 2.5, -2, -4, 2.5, 2, 4, 2.5, 2, -4, 2.5, -2, 4, 2.5, 2, -4, 2.5, -2, -4, 2.5, -2, 4, -2.5, 2, -4, -2.5, 2, 4, -2.5, -2, -4, -2.5, 2, 4, -2.5, -2, 4, -2.5, -2, -4, 2.5, 2, 4, -2.5, 2, 4, 2.5, 2, -4, -2.5, 2, 4, -2.5, 2, -4, 2.5, 2, -4, -2.5, -2, 4, 2.5, -2, 4, -2.5, -2, -4, 2.5, -2, 4, 2.5, -2, -4, -2.5, -2, -4)
+
+[node name="Gas_Can_Cell_Scene" type="Node3D"]
+
+[node name="Gas_Can_Cell" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ubmjl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gas_Can_Cell"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_plo82")
+
+[node name="Wooden_Box" parent="Gas_Can_Cell" instance=ExtResource("1_w2vlt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.404, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gas_Can_Cell/Wooden_Box"]
+visible = false
+mesh = SubResource("BoxMesh_8akas")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gas_Can_Cell/Wooden_Box/MeshInstance3D"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/Wooden_Box/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8sbnn")

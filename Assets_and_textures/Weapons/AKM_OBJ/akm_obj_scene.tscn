@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfvv6upkdjux2"]
+
+[ext_resource type="PackedScene" uid="uid://bidwk7fbqt1u5" path="res://Assets_and_textures/Weapons/AKM_OBJ/AKM_scene.gltf" id="1_3udla"]
+
+[node name="AKM_scene" instance=ExtResource("1_3udla")]
