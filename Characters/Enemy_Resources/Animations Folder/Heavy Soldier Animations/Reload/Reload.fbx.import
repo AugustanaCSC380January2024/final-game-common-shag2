@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhc4d1xnlk0vg"
-path="res://.godot/imported/Rifle Idle.fbx-0c21a84cb496d8012e164bad9a6d00ee.scn"
+uid="uid://cy84iy62r57h0"
+path="res://.godot/imported/Reload.fbx-43d6537eae936c4f5976a02be1bffbc5.scn"
 
 [deps]
 
-source_file="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Idle_Not_Aiming/Rifle Idle.fbx"
-dest_files=["res://.godot/imported/Rifle Idle.fbx-0c21a84cb496d8012e164bad9a6d00ee.scn"]
+source_file="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Reload/Reload.fbx"
+dest_files=["res://.godot/imported/Reload.fbx-43d6537eae936c4f5976a02be1bffbc5.scn"]
 
 [params]
 
