@@ -1,0 +1,34 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://djq8gyiaf48uj"
+path="res://.godot/imported/Start Walking.fbx-fdda86ce1a30498b9eb764a0b4f4c43e.scn"
+
+[deps]
+
+source_file="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Start_Walking/Start Walking.fbx"
+dest_files=["res://.godot/imported/Start Walking.fbx-fdda86ce1a30498b9eb764a0b4f4c43e.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

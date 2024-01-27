@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cefru07prqumf"]
+
+[ext_resource type="PackedScene" uid="uid://bc8ym6sqgcghi" path="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Hit_Reaction_Idle/Hit Reaction.fbx" id="1_k3bm0"]
+
+[node name="Hit Reaction Idle" instance=ExtResource("1_k3bm0")]
