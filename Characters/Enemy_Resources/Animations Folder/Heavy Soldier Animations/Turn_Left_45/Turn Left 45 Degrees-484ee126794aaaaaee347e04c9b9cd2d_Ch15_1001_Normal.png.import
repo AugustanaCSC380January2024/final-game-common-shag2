@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dxtgyphxqjs8t"
+path.s3tc="res://.godot/imported/Turn Left 45 Degrees-484ee126794aaaaaee347e04c9b9cd2d_Ch15_1001_Normal.png-56033e46dd799f9c176f9a5557980ea9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Turn_Left_45/Turn Left 45 Degrees-484ee126794aaaaaee347e04c9b9cd2d_Ch15_1001_Normal.png"
+dest_files=["res://.godot/imported/Turn Left 45 Degrees-484ee126794aaaaaee347e04c9b9cd2d_Ch15_1001_Normal.png-56033e46dd799f9c176f9a5557980ea9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Turn_Left_45/Turn Left 45 Degrees-484ee126794aaaaaee347e04c9b9cd2d_Ch15_1001_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
