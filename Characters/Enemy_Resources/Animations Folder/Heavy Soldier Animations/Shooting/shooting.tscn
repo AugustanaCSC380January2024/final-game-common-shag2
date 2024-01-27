@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxkhq7nesppek"]
+
+[ext_resource type="PackedScene" uid="uid://c4bfx3371824n" path="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Shooting/Gunplay.fbx" id="1_d5c0o"]
+
+[node name="Shooting" instance=ExtResource("1_d5c0o")]
