@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://snqt6qj5h2rt"]
+[gd_scene load_steps=17 format=3 uid="uid://snqt6qj5h2rt"]
 
 [ext_resource type="Script" path="res://Level_gen/Level_Generation.gd" id="1_6vgfj"]
 [ext_resource type="PackedScene" uid="uid://ejdqqkiehl7g" path="res://Level_gen/watch_tower_scene.tscn" id="2_2v2fa"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="13_0psun"]
 [ext_resource type="AudioStream" uid="uid://bkxj1er1xrkal" path="res://Music/Royalty Free Copyright Safe Music.mp3" id="14_h8r1g"]
 [ext_resource type="PackedScene" uid="uid://bfbwcp8k0ixua" path="res://Level_gen/car_escape_scene.tscn" id="15_qcs15"]
-[ext_resource type="PackedScene" uid="uid://8lledbbvw6uc" path="res://Cell_Scenes/heavy_soldier_master_scene.tscn" id="16_8xrf1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij376"]
 albedo_color = Color(1, 0.2, 1, 1)
@@ -60,6 +59,3 @@ autoplay = true
 
 [node name="Car Escape Scene" parent="." instance=ExtResource("15_qcs15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Heavy_Soldier_Master_Scene" parent="." instance=ExtResource("16_8xrf1")]
-transform = Transform3D(4.7, 0, 0, 0, 4.7, 0, 0, 0, 4.7, -9.33838, 0, 7)
