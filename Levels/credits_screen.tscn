@@ -14,26 +14,20 @@ script = ExtResource("1_n1v5j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1023.0
+offset_bottom = 397.0
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Main_Menu_Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 text = "Back To Main Menu
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 447.0
-offset_top = 1.0
-offset_right = 590.0
-offset_bottom = 71.0
-theme = SubResource("Theme_fbgg7")
-
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Play Credits Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
-text = "Credits"
+theme = SubResource("Theme_fbgg7")
+text = "Back To Main Menu
+"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main_Menu_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play Credits Button" to="." method="_on_play_credits_button_pressed"]
