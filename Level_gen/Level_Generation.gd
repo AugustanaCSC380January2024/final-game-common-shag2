@@ -1,8 +1,9 @@
 extends Node3D
 
-@onready var grid_map = $Ground/GridMap
-@onready var ground = $Ground
+@onready var grid_map = $NavRegion_Pathfinding/Ground/GridMap
+@onready var ground = $NavRegion_Pathfinding/Ground
 @onready var player1 = $Player
+@onready var nav_region_pathfinding = $NavRegion_Pathfinding
 
 
 @export var watchtower : PackedScene
@@ -35,6 +36,7 @@ var number_array : Array[int] = [0,1,2,3,4,5,6,7,8,9]
 
 func _ready():
 	create_map()
+	#nav_region_pathfinding.bake_navigation_mesh(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

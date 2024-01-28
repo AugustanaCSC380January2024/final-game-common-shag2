@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsxpfhtqsuf8h"]
+
+[ext_resource type="Script" path="res://Credits Screen.gd" id="1_n1v5j"]
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="2_4f6sn"]
+
+[sub_resource type="Theme" id="Theme_fbgg7"]
+default_font = ExtResource("2_4f6sn")
+default_font_size = 32
+
+[node name="Credits Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n1v5j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Back To Main Menu
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 447.0
+offset_top = 1.0
+offset_right = 590.0
+offset_bottom = 71.0
+theme = SubResource("Theme_fbgg7")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Credits"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

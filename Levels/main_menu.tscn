@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbf7cplmttc45"]
+
+[ext_resource type="Script" path="res://Main Menu.gd" id="1_uyltn"]
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="2_iwiv0"]
+
+[sub_resource type="Theme" id="Theme_fbgg7"]
+default_font = ExtResource("2_iwiv0")
+default_font_size = 32
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uyltn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -68.0
+offset_right = 35.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Play
+"
+
+[node name="Options Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Options"
+
+[node name="Credits Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Credits
+"
+
+[node name="Quit Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits Button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @onready var line_of_sight = $Line_Of_Sight
 @onready var bullet_coords = $RootNode/AKM_scene/Bullet_Coords
 

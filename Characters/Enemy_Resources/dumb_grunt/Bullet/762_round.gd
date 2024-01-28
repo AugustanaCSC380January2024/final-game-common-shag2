@@ -24,3 +24,12 @@ func _on_bullet_area_area_entered(area):
 		area.get_parent().current_health -= damage
 		queue_free()
 		remove_child(self)
+		
+	
+
+
+func _on_bullet_area_body_entered(body):
+	if body.is_in_group("player_collidor"):
+		body.get_parent().current_health -= damage
+		queue_free()
+		remove_child(self)
