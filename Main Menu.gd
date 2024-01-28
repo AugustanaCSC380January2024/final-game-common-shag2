@@ -8,7 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 
 
 func _on_play_button_pressed():
@@ -16,8 +17,7 @@ func _on_play_button_pressed():
 
 
 func _on_options_button_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_file("res://Menu_Scenes/Gameplay Controls.tscn")
 
 func _on_credits_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/credits_screen.tscn")

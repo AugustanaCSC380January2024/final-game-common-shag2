@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6yd5ad16ylvw"]
+
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="1_45b7k"]
+[ext_resource type="Script" path="res://Menu_Scenes/Gameplay Controls.gd" id="1_wfwof"]
+[ext_resource type="FontFile" uid="uid://nlbjy1mmrpjh" path="res://Assets_and_textures/Fonts/OpenSans-SemiBold.ttf" id="2_x45sa"]
+
+[sub_resource type="Theme" id="Theme_fbgg7"]
+default_font = ExtResource("1_45b7k")
+default_font_size = 72
+
+[sub_resource type="Theme" id="Theme_2b1xg"]
+default_font = ExtResource("2_x45sa")
+default_font_size = 34
+
+[sub_resource type="Theme" id="Theme_3mxd3"]
+default_font = ExtResource("2_x45sa")
+default_font_size = 56
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfwof")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Back To Main Menu"
+
+[node name="Forwards Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Forwards : W or Up Key"
+
+[node name="Backwards Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Backwards : S or Down Key"
+
+[node name="Move Left Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Move Left : A or Left Key"
+
+[node name="Move Right Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Right : D or Right Key"
+
+[node name="Jump Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Jump : Space Bar
+"
+
+[node name="Crouch Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Crouch : Shift key"
+
+[node name="Flashlight Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Toggle Flashlight : F"
+
+[node name="Quit Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Exit the Game : Esc Key"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 36
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_3mxd3")
+text = "Controls and Keys"
+
+[node name="Shoot Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Shooting : Left Mouse Click"
+
+[node name="Grab Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grab : G, When Close Enough"
+
+[node name="Grabbable Objects Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grabbable Objects: 
+Health Kit, Gas Cans"
+
+[node name="Grabbable Objects Label2" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Deposit Gas Can : G,
+With Gas Can
+at Escape Car"
+
+[node name="Quit Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Pause Menu : P"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

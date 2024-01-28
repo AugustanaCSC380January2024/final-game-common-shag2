@@ -22,6 +22,7 @@ SignalManager="*res://World_Scripts/signal_manager.gd"
 [display]
 
 window/size/viewport_width=1024
+window/size/mode=3
 
 [input]
 
