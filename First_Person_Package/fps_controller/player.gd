@@ -18,9 +18,13 @@ signal turn_to_player
 @onready var grab_area = $Grab_Area
 @onready var player_hitbox = $Player_Hitbox
 
+@onready var death_sound_grunt = $"Death Sound Grunt"
+
+@onready var pause_menu = $"Head/Camera3D/Pause Menu"
+var is_paused : bool = false
 
 var holding_gas_can : bool = false
-@onready var death_sound_grunt = $"Death Sound Grunt"
+
 
 
 var current_health: int:
@@ -67,6 +71,10 @@ func _input(event):
 		mouse_relative_y = clamp(event.relative.y, -50, 10)
 
 func _physics_process(delta):
+	#Pause Menu
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
+	
 	# Sway
 	$Head/Camera3D/Abilities.rotation.y = lerp($Head/Camera3D/Abilities.rotation.y, deg_to_rad(-mouse_relative_x / 40), weapon_sway_amount * delta)
 	$Head/Camera3D/Abilities.rotation.x = lerp($Head/Camera3D/Abilities.rotation.x, deg_to_rad(-mouse_relative_y / 20), weapon_sway_amount * delta)
@@ -210,3 +218,12 @@ func _on_player_hitbox_area_entered(area):
 		
 func play_grunt_death_sound():
 	death_sound_grunt.play()
+	
+func pauseMenu():
+	if is_paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	is_paused = !is_paused

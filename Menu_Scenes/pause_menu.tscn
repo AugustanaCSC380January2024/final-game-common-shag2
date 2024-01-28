@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://by4357xw8gewr"]
+
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="1_rqwm6"]
+[ext_resource type="Script" path="res://Menu_Scenes/pause_menu.gd" id="1_yddcg"]
+
+[sub_resource type="Theme" id="Theme_8fvl3"]
+default_font = ExtResource("1_rqwm6")
+default_font_size = 32
+
+[node name="Pause Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -133.0
+offset_right = -216.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 1.322)
+script = ExtResource("1_yddcg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -68.8351
+offset_right = 237.0
+offset_bottom = 236.165
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 1.9
+theme_override_constants/separation = 12
+
+[node name="Resume Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8fvl3")
+text = "Resume Game"
+
+[node name="Gameplay Controls Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8fvl3")
+text = "Gameplay Controls"
+
+[node name="Quit to Main Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8fvl3")
+text = "Quit To Main Menu
+"
+
+[node name="Quit Game Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8fvl3")
+text = "Exit Game
+"
+
+[node name="Control Menu Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Use  U to Move Toggle Up"
+horizontal_alignment = 1
+
+[node name="Control Menu Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Use  J to Move Toggle Down"
+horizontal_alignment = 1
+
+[node name="Control Menu Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press Shift + Enter for Action
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Gameplay Controls Button" to="." method="_on_gameplay_controls_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Gameplay Controls Button" to="." method="_on_gameplay_controls_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit to Main Button" to="." method="_on_quit_to_main_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Quit to Main Button" to="." method="_on_quit_to_main_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit Game Button" to="." method="_on_quit_game_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Quit Game Button" to="." method="_on_quit_game_button_toggled"]
