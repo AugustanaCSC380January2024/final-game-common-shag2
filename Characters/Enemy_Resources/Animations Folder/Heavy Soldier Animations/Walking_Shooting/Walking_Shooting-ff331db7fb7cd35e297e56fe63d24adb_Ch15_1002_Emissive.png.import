@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cvtv6k2d7ih0k"
+path.s3tc="res://.godot/imported/Walking_Shooting-ff331db7fb7cd35e297e56fe63d24adb_Ch15_1002_Emissive.png-abdae2a1883f3f62e7a07d4ffd061ea0.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://Characters/Enemy_Resources/Animations Folder/Heavy Soldier Animations/Walking_Shooting/Walking_Shooting-ff331db7fb7cd35e297e56fe63d24adb_Ch15_1002_Emissive.png"
+dest_files=["res://.godot/imported/Walking_Shooting-ff331db7fb7cd35e297e56fe63d24adb_Ch15_1002_Emissive.png-abdae2a1883f3f62e7a07d4ffd061ea0.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
