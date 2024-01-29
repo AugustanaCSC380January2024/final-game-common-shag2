@@ -5,7 +5,7 @@ extends Node3D
 @onready var explosion_particles = $ExplosionParticles
 
 var player : CharacterBody3D
-
+var has_exploded : bool = false
 func can_picked_up():
 	gas_can.visible = false
 	pick_up_area.remove_from_group("gas_can_area")
@@ -22,7 +22,8 @@ func _on_pick_up_area_body_entered(body):
 func _on_explosion_area_area_entered(area):
 	if area.is_in_group("bullet_area"):
 		#explode 
-		print("Boom")
-		explosion_particles.emitting = true
-		gas_can.visible = false
-		pick_up_area.remove_from_group("gas_can_area")
+		if has_exploded == false:
+			explosion_particles.emitting = true
+			gas_can.visible = false
+			pick_up_area.remove_from_group("gas_can_area")
+			has_exploded = true

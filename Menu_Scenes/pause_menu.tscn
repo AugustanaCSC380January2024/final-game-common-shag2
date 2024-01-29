@@ -63,18 +63,21 @@ theme_override_constants/separation = 12
 [node name="Resume Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 toggle_mode = true
 text = "Resume Game"
 
 [node name="Gameplay Controls Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 toggle_mode = true
 text = "Gameplay Controls"
 
 [node name="Quit to Main Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 toggle_mode = true
 text = "Quit To Main Menu
 "
@@ -82,22 +85,26 @@ text = "Quit To Main Menu
 [node name="Quit Game Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 toggle_mode = true
 text = "Exit Game
 "
 
 [node name="Control Menu Label" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Use  U to Move Toggle Up"
 horizontal_alignment = 1
 
 [node name="Control Menu Label2" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Use  J to Move Toggle Down"
 horizontal_alignment = 1
 
 [node name="Control Menu Label3" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Press Shift + Enter for Action
 "
 horizontal_alignment = 1
@@ -159,6 +166,7 @@ offset_bottom = 19.007
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_3mxd3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Controls and Keys"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GamePlay Pause"]
@@ -179,53 +187,63 @@ theme_override_constants/separation = 15
 [node name="Forwards Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Forwards : W or Up Key"
 
 [node name="Backwards Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Backwards : S or Down Key"
 
 [node name="Move Left Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Move Left : A or Left Key"
 
 [node name="Move Right Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Right : D or Right Key"
 
 [node name="Jump Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Jump : Space Bar
 "
 
 [node name="Crouch Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Crouch : Shift key"
 
 [node name="Flashlight Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Toggle Flashlight : F"
 
 [node name="Reload Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Relaod : R
 "
 
 [node name="Quit Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Exit the Game : Esc Key"
 
 [node name="Quit Label2" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Leave Menu : Shift + Enter"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="GamePlay Pause/HBoxContainer"]
@@ -236,24 +254,28 @@ theme_override_constants/separation = 36
 [node name="Shoot Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Shooting : Left Mouse 
 Click"
 
 [node name="Grab Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Grab : G, When Close 
 Enough"
 
 [node name="Grabbable Objects Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Grabbable Objects: 
 Health Kit, Gas Cans"
 
 [node name="Grabbable Objects Label2" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Deposit Gas Can : G,
 With Gas Can
 at Escape Car"
@@ -261,6 +283,7 @@ at Escape Car"
 [node name="Quit Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Pause Menu : P"
 
 [connection signal="pressed" from="Button_Container/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
