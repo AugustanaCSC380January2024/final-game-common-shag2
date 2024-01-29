@@ -26,6 +26,7 @@ var buffer_distance : float = 5
 var current_health: int:
 	set(health_in):
 		current_health = health_in
+		print("damaged")
 		#if current_health / 2 < starting_health and is_half_health == false:
 			#Set_hit_animation
 		if current_health <= 0:
@@ -34,7 +35,7 @@ var current_health: int:
 			anim_tree.set("parameters/conditions/dead_down_to_aim", true)
 			anim_tree.set("parameters/conditions/Shoot_to_dead", true)
 
-const SPEED = 4.0
+const SPEED = 2.0
 
 func _ready():
 	player = get_node(player_path)
@@ -110,3 +111,10 @@ func _on_shooting_timer_timeout():
 func _on_animation_state_machine_animation_finished(anim_name):
 	if anim_name == "Dying":
 		remove_heavy_soldier()
+
+
+func _on_collision_area_box_area_entered(area):
+	if area.is_in_group("bullet_area"):
+		area.get_parent().get_parent().current_health -= 18
+		queue_free()
+		remove_child(self)

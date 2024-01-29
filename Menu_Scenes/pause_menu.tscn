@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://by4357xw8gewr"]
+[gd_scene load_steps=6 format=3 uid="uid://by4357xw8gewr"]
 
 [ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="1_rqwm6"]
 [ext_resource type="Script" path="res://Menu_Scenes/pause_menu.gd" id="1_yddcg"]
 [ext_resource type="AudioStream" uid="uid://cjw07wjvqrlum" path="res://Assets_and_textures/Audio/error_sound_effect.mp3" id="3_vfsjm"]
+[ext_resource type="Texture2D" uid="uid://bkptjampimo1q" path="res://Menu_Scenes/Images For Menus/—Pngtree—blue arrow gradient button icon_5464335.png" id="4_bvx4t"]
 
 [sub_resource type="Theme" id="Theme_8fvl3"]
 default_font = ExtResource("1_rqwm6")
@@ -15,10 +16,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -216.0
-offset_top = -133.0
-offset_right = -216.0
-offset_bottom = -133.0
+offset_left = -292.0
+offset_top = -110.0
+offset_right = -292.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 1.322)
@@ -26,10 +27,10 @@ script = ExtResource("1_yddcg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -68.8351
-offset_right = 237.0
-offset_bottom = 236.165
+offset_left = 29.0
+offset_top = -64.2965
+offset_right = 269.0
+offset_bottom = 240.704
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -81,6 +82,36 @@ horizontal_alignment = 1
 
 [node name="Error_Sound_Effect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vfsjm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -15.5
+offset_top = -43.1165
+offset_right = 24.5
+offset_bottom = -3.1165
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="toggle_1" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_bvx4t")
+
+[node name="toggle_2" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+position = Vector2(0, 55)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_bvx4t")
+
+[node name="toggle_3" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+position = Vector2(0, 105)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_bvx4t")
+
+[node name="toggle_4" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+position = Vector2(0, 160.363)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_bvx4t")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_toggled"]

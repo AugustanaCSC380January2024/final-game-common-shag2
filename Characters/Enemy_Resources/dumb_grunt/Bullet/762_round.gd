@@ -24,16 +24,20 @@ func _on_bullet_area_area_entered(area):
 		area.get_parent().current_health -= damage
 		queue_free()
 		remove_child(self)
-		
+	if area.is_in_group("enemy_hitbox"):
+		area.get_parent().get_parent().current_health -= damage
+		queue_free()
+		remove_child(self)
 	
 
 
 func _on_bullet_area_body_entered(body):
 	if body.is_in_group("Heavy_Soldier_Body"):
-		body.current_health -= damage
+		body.get_parent().current_health -= damage
+		print("Player Shot Me")
 		queue_free()
 		remove_child(self)
-	if body.is_in_group("player"):
-		body.current_health -= damage
-		queue_free()
-		remove_child(self)
+	#if body.is_in_group("player"):
+	#	body.current_health -= damage
+	#	queue_free()
+	#	remove_child(self)

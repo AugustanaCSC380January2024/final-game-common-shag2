@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccqa7mttvtffe"]
+[gd_scene load_steps=11 format=3 uid="uid://ccqa7mttvtffe"]
 
 [ext_resource type="Script" path="res://First_Person_Package/fps_controller/abilities/shoot/shoot.gd" id="1_usqvv"]
 [ext_resource type="PackedScene" uid="uid://caw3udkdenyww" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/762_round.tscn" id="2_6lrw0"]
@@ -9,9 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://x5mjykmn3yqk" path="res://First_Person_Package/fps_controller/abilities/shoot/audio/trigger.wav" id="4_blmlp"]
 [ext_resource type="AudioStream" uid="uid://dyuuk1xumppep" path="res://First_Person_Package/fps_controller/abilities/shoot/audio/shell.wav" id="5_j3sc6"]
 [ext_resource type="AudioStream" uid="uid://dawjk4vcd5lv7" path="res://First_Person_Package/fps_controller/abilities/shoot/audio/reload.wav" id="6_j51q0"]
-[ext_resource type="ArrayMesh" uid="uid://daau33dtra4xe" path="res://First_Person_Package/fps_controller/models/AK-47.obj" id="7_wll2t"]
-
-[sub_resource type="Skin" id="Skin_g4adb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mhgbn"]
 size = Vector3(0.01, 0.01, 0.01)
@@ -29,18 +26,14 @@ target_position = Vector3(0, 0, -100)
 [node name="Position3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.1, -0.2)
 
-[node name="Weapon" type="MeshInstance3D" parent="Position3D"]
-visible = false
-mesh = ExtResource("7_wll2t")
-skin = SubResource("Skin_g4adb")
-skeleton = NodePath("")
-
 [node name="AKM_scene" parent="Position3D" instance=ExtResource("3_jaapq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0971832, 0)
+cast_shadow = 0
 
 [node name="Bullet_Coords" type="MeshInstance3D" parent="Position3D/AKM_scene"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.151032, -0.0645715, -0.58)
 visible = false
+cast_shadow = 0
 mesh = SubResource("BoxMesh_mhgbn")
 
 [node name="Control" type="Control" parent="."]

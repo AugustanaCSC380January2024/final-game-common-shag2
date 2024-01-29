@@ -4,6 +4,7 @@ extends Node3D
 @onready var ground = $NavRegion_Pathfinding/Ground
 @onready var player1 = $Player
 @onready var nav_region_pathfinding = $NavRegion_Pathfinding
+@onready var pause_menu = $"Pause Menu"
 
 
 @export var watchtower : PackedScene
@@ -17,6 +18,7 @@ extends Node3D
 @export var gas_can: PackedScene
 @export var health_kit: PackedScene
 
+#var is_paused : bool = false
 #@onready var watch_tower = $Scene_Manager/WatchTower
 #@onready var level_gen_twigs = $Scene_Manager/LevelGenTwigs
 #@onready var heavy_soldier = $Scene_Manager/Heavy_Soldier
@@ -43,7 +45,9 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-
+	#Pause Menu
+#	if Input.is_action_just_pressed("Pause"):
+#		pauseMenu()
 
 func create_map() -> void:
 
@@ -168,3 +172,11 @@ func get_cell_id(cell_Node : Node3D) -> int:
 		
 		
 	return 0
+#func pauseMenu():
+#	if is_paused:
+#		pause_menu.hide()
+#		Engine.time_scale = 1
+#	else:
+#		pause_menu.show()
+#		Engine.time_scale = 0
+#	is_paused = !is_paused

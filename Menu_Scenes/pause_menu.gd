@@ -5,32 +5,40 @@ extends Control
 @onready var quit_to_main_button = $"MarginContainer/VBoxContainer/Quit to Main Button"
 @onready var quit_game_button = $"MarginContainer/VBoxContainer/Quit Game Button"
 @onready var error_sound_effect = $Error_Sound_Effect
+@onready var toggle_1 = $MarginContainer2/VBoxContainer/toggle_1
+@onready var toggle_2 = $MarginContainer2/VBoxContainer/toggle_2
+@onready var toggle_3 = $MarginContainer2/VBoxContainer/toggle_3
+@onready var toggle_4 = $MarginContainer2/VBoxContainer/toggle_4
 
 var button_toggled : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	resume_button._toggled = true
-	gameplay_controls_button._toggled = false
-	quit_to_main_button._toggled = false
-	quit_game_button._toggled = false
+	toggle_2.visible = false
+	toggle_3.visible = false
+	toggle_4.visible = false
+	#resume_button._toggled = true
+	#gameplay_controls_button._toggled = false
+	#quit_to_main_button._toggled = false
+	#quit_game_button._toggled = false
 	button_toggled = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
 	if Input.is_action_just_pressed("Button_Toggle_Up"):
 		if button_toggled <= 1:
 			if error_sound_effect.playing == false:
 				error_sound_effect.play()
 		elif button_toggled == 2:
-			gameplay_controls_button.toggled = false
-			resume_button.toggled = true
+			toggle_1.visible = true
+			toggle_2.visible = false
 			button_toggled = 1
 		elif button_toggled == 3:
-			quit_to_main_button.toggled = false
-			gameplay_controls_button.toggled = true
+			toggle_2.visible = true
+			toggle_3.visible = false
 			button_toggled = 2
 		elif button_toggled == 4:
-			quit_game_button.toggled = false
-			quit_to_main_button.toggled = true
+			toggle_3.visible = true
+			toggle_4.visible = false
 			button_toggled = 3
 	
 	if Input.is_action_just_pressed("Button_Toggle_Down"):
@@ -38,16 +46,16 @@ func _process(delta):
 			if error_sound_effect.playing == false:
 				error_sound_effect.play()
 		elif button_toggled == 3:
-			quit_to_main_button.toggled = true
-			quit_game_button.toggled = true
+			toggle_4.visible = true
+			toggle_3.visible = false
 			button_toggled = 4
 		elif button_toggled == 2:
-			gameplay_controls_button.toggled = false
-			quit_to_main_button.toggled = true
+			toggle_3.visible = true
+			toggle_2.visible = false
 			button_toggled = 3
 		elif button_toggled == 1:
-			resume_button.toggled = false
-			gameplay_controls_button = true
+			toggle_2.visible = true
+			toggle_1.visible = false
 			button_toggled = 2
 			
 	if Input.is_action_just_pressed("Button_Action_On_Toggle"):

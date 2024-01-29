@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://caa2tr8h0m6o1"]
+[gd_scene load_steps=12 format=3 uid="uid://caa2tr8h0m6o1"]
 
 [ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_o7a64"]
 [ext_resource type="Script" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.gd" id="1_okyno"]
 [ext_resource type="PackedScene" uid="uid://4mghqsqpxofv" path="res://Assets_and_textures/Tools/Gas_can/scene.gltf" id="2_eee1y"]
+[ext_resource type="PackedScene" uid="uid://be12vhu6nrub3" path="res://Assets_and_textures/Particles/explosion_particles.tscn" id="4_rsy0f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
 albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
@@ -22,6 +23,9 @@ data = PackedVector3Array(-2.5, 2, 4, 2.5, 2, 4, -2.5, -2, 4, 2.5, 2, 4, 2.5, -2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8enk1"]
 size = Vector3(50, 25, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0gcb4"]
+size = Vector3(6, 8, 4)
 
 [node name="Gas_Can_Cell_Scene" type="Node3D"]
 script = ExtResource("1_okyno")
@@ -56,4 +60,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1965, 4.43796, -8.53872)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/Gas_Can/Pick_Up_Area"]
 shape = SubResource("BoxShape3D_8enk1")
 
+[node name="Explosion Area" type="Area3D" parent="Gas_Can_Cell/Gas_Can"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gas_Can_Cell/Gas_Can/Explosion Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49902, 4.19311, -8.29001)
+shape = SubResource("BoxShape3D_0gcb4")
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("4_rsy0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07999, 0)
+
 [connection signal="body_entered" from="Gas_Can_Cell/Gas_Can/Pick_Up_Area" to="." method="_on_pick_up_area_body_entered"]
+[connection signal="area_entered" from="Gas_Can_Cell/Gas_Can/Explosion Area" to="." method="_on_explosion_area_area_entered"]
