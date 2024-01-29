@@ -4,7 +4,7 @@ extends Node3D
 @onready var ground = $NavRegion_Pathfinding/Ground
 @onready var player1 = $Player
 @onready var nav_region_pathfinding = $NavRegion_Pathfinding
-@onready var pause_menu = $"Pause Menu"
+
 
 
 @export var watchtower : PackedScene

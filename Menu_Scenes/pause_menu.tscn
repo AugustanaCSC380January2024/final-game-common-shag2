@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://by4357xw8gewr"]
+[gd_scene load_steps=11 format=3 uid="uid://by4357xw8gewr"]
 
 [ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="1_rqwm6"]
 [ext_resource type="Script" path="res://Menu_Scenes/pause_menu.gd" id="1_yddcg"]
+[ext_resource type="Shader" path="res://Menu_Scenes/pause_menu.gdshader" id="2_mbutg"]
 [ext_resource type="AudioStream" uid="uid://cjw07wjvqrlum" path="res://Assets_and_textures/Audio/error_sound_effect.mp3" id="3_vfsjm"]
 [ext_resource type="Texture2D" uid="uid://bkptjampimo1q" path="res://Menu_Scenes/Images For Menus/—Pngtree—blue arrow gradient button icon_5464335.png" id="4_bvx4t"]
+[ext_resource type="FontFile" uid="uid://nlbjy1mmrpjh" path="res://Assets_and_textures/Fonts/OpenSans-SemiBold.ttf" id="7_4tjmu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fh74a"]
+shader = ExtResource("2_mbutg")
+shader_parameter/amount = 2.0
 
 [sub_resource type="Theme" id="Theme_8fvl3"]
 default_font = ExtResource("1_rqwm6")
 default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_3mxd3"]
+default_font = ExtResource("7_4tjmu")
+default_font_size = 56
+
+[sub_resource type="Theme" id="Theme_2b1xg"]
+default_font = ExtResource("7_4tjmu")
+default_font_size = 34
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -25,56 +39,64 @@ grow_vertical = 2
 scale = Vector2(2, 1.322)
 script = ExtResource("1_yddcg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fh74a")
+layout_mode = 0
+offset_left = -377.0
+offset_top = -225.416
+offset_right = 1603.0
+offset_bottom = 494.584
+
+[node name="Button_Container" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 29.0
 offset_top = -64.2965
 offset_right = 269.0
 offset_bottom = 240.704
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Button_Container"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 1.9
 theme_override_constants/separation = 12
 
-[node name="Resume Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Resume Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
 toggle_mode = true
 text = "Resume Game"
 
-[node name="Gameplay Controls Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Gameplay Controls Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
 toggle_mode = true
 text = "Gameplay Controls"
 
-[node name="Quit to Main Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit to Main Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
 toggle_mode = true
 text = "Quit To Main Menu
 "
 
-[node name="Quit Game Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit Game Button" type="Button" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8fvl3")
 toggle_mode = true
 text = "Exit Game
 "
 
-[node name="Control Menu Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Control Menu Label" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 text = "Use  U to Move Toggle Up"
 horizontal_alignment = 1
 
-[node name="Control Menu Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Control Menu Label2" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 text = "Use  J to Move Toggle Down"
 horizontal_alignment = 1
 
-[node name="Control Menu Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Control Menu Label3" type="Label" parent="Button_Container/VBoxContainer"]
 layout_mode = 2
 text = "Press Shift + Enter for Action
 "
@@ -83,41 +105,165 @@ horizontal_alignment = 1
 [node name="Error_Sound_Effect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vfsjm")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="Arrow Container" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = -15.5
 offset_top = -43.1165
 offset_right = 24.5
 offset_bottom = -3.1165
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Arrow Container"]
 layout_mode = 2
 theme_override_constants/separation = 21
 
-[node name="toggle_1" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+[node name="toggle_1" type="Sprite2D" parent="Arrow Container/VBoxContainer"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bvx4t")
 
-[node name="toggle_2" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+[node name="toggle_2" type="Sprite2D" parent="Arrow Container/VBoxContainer"]
 position = Vector2(0, 55)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bvx4t")
 
-[node name="toggle_3" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+[node name="toggle_3" type="Sprite2D" parent="Arrow Container/VBoxContainer"]
 position = Vector2(0, 105)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bvx4t")
 
-[node name="toggle_4" type="Sprite2D" parent="MarginContainer2/VBoxContainer"]
+[node name="toggle_4" type="Sprite2D" parent="Arrow Container/VBoxContainer"]
 position = Vector2(0, 160.363)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("4_bvx4t")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Gameplay Controls Button" to="." method="_on_gameplay_controls_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Gameplay Controls Button" to="." method="_on_gameplay_controls_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit to Main Button" to="." method="_on_quit_to_main_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Quit to Main Button" to="." method="_on_quit_to_main_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit Game Button" to="." method="_on_quit_game_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Quit Game Button" to="." method="_on_quit_game_button_toggled"]
+[node name="GamePlay Pause" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 177.0
+offset_top = -111.952
+offset_right = 177.0
+offset_bottom = -111.952
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="GamePlay Pause"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -316.667
+offset_top = -57.993
+offset_right = 170.333
+offset_bottom = 19.007
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_3mxd3")
+text = "Controls and Keys"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GamePlay Pause"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -454.167
+offset_top = 49.1679
+offset_right = 349.833
+offset_bottom = 678.168
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GamePlay Pause/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Forwards Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Forwards : W or Up Key"
+
+[node name="Backwards Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Backwards : S or Down Key"
+
+[node name="Move Left Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Move Left : A or Left Key"
+
+[node name="Move Right Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Right : D or Right Key"
+
+[node name="Jump Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Jump : Space Bar
+"
+
+[node name="Crouch Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Crouch : Shift key"
+
+[node name="Flashlight Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Toggle Flashlight : F"
+
+[node name="Reload Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Relaod : R
+"
+
+[node name="Quit Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Exit the Game : Esc Key"
+
+[node name="Quit Label2" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Leave Menu : Shift + Enter"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GamePlay Pause/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 36
+
+[node name="Shoot Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Shooting : Left Mouse 
+Click"
+
+[node name="Grab Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grab : G, When Close 
+Enough"
+
+[node name="Grabbable Objects Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grabbable Objects: 
+Health Kit, Gas Cans"
+
+[node name="Grabbable Objects Label2" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Deposit Gas Can : G,
+With Gas Can
+at Escape Car"
+
+[node name="Quit Label" type="Label" parent="GamePlay Pause/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Pause Menu : P"
+
+[connection signal="pressed" from="Button_Container/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Button_Container/VBoxContainer/Gameplay Controls Button" to="." method="_on_gameplay_controls_button_pressed"]
+[connection signal="pressed" from="Button_Container/VBoxContainer/Quit to Main Button" to="." method="_on_quit_to_main_button_pressed"]
+[connection signal="pressed" from="Button_Container/VBoxContainer/Quit Game Button" to="." method="_on_quit_game_button_pressed"]
