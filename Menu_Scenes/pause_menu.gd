@@ -1,9 +1,9 @@
 extends Control
 
-@onready var resume_button = $"MarginContainer/VBoxContainer/Resume Button"
-@onready var gameplay_controls_button = $"MarginContainer/VBoxContainer/Gameplay Controls Button" 
-@onready var quit_to_main_button = $"MarginContainer/VBoxContainer/Quit to Main Button"
-@onready var quit_game_button = $"MarginContainer/VBoxContainer/Quit Game Button"
+@onready var resume_button = $"Button_Container/VBoxContainer/Resume Button"
+@onready var gameplay_controls_button = $"Button_Container/VBoxContainer/Gameplay Controls Button" 
+@onready var quit_to_main_button = $"Button_Container/VBoxContainer/Quit to Main Button"
+@onready var quit_game_button = $"Button_Container/VBoxContainer/Quit Game Button"
 @onready var error_sound_effect = $Error_Sound_Effect
 @onready var toggle_1 = $"Arrow Container/VBoxContainer/toggle_1"
 @onready var toggle_2 = $"Arrow Container/VBoxContainer/toggle_2"

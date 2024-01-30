@@ -8,8 +8,6 @@ void vertex() {
 
 void fragment() {
 	vec4 color = textureLod(screen_texture, SCREEN_UV, amount);
-	color.r = color.r / 2.0;
-	color.g = 0.0;
 
 	COLOR = color;
 }

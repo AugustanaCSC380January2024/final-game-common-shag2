@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4thm0iq5h6ua"]
+[gd_scene load_steps=6 format=3 uid="uid://4thm0iq5h6ua"]
 
 [ext_resource type="Script" path="res://Spawn Cell.gd" id="1_lsvx0"]
+[ext_resource type="PackedScene" uid="uid://xhsr2a75o6xi" path="res://Characters/Enemy_Resources/Heavy_soldier/Heavy_Soldier_Character.tscn" id="2_dk4fp"]
 [ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_rj6c6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ph7ci"]
@@ -12,6 +13,7 @@ data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5
 
 [node name="Level Gen Spawn Cell" type="Node3D"]
 script = ExtResource("1_lsvx0")
+heavy_soldier = ExtResource("2_dk4fp")
 
 [node name="Level_Gen_Empty_Cell" type="Node3D" parent="."]
 

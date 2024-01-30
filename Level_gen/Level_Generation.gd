@@ -29,7 +29,7 @@ var z_bound : int
 var number_array : Array[int] = [0,1,2,3,5,6,7,8,9]
 # Called when the node enters the scene tree for the first time.
 # set_cell_item(position: Vector3i, item: int, orientation: int = 0)
-var safe_array : Array[int] = [0,1,2,5,6,7,9]
+var safe_array : Array[int] = [0,2,5,6,7,9]
 
 var probability : Array[int] = [1,2,3,4,5,6,7,8,9,10]
 
@@ -190,14 +190,16 @@ func create_updated_map(Mode : int) -> void:
 
 
 func pick_updated_cell(x_coord: int, z_coord: int):
-	if z_coord < 10 and z_coord > -10 and x_coord < 10 and x_coord > -10:
+#	print("X coord " + str(x_coord))
+#	print("Z coord " + str(z_coord))
+	if z_coord < 15 and z_coord > -15 and x_coord < 15 and x_coord > -15:
 		var child = empty_cell.instantiate()
 		add_child(child)
 		child.global_position = Vector3i(x_coord, 0, z_coord)
 	elif z_coord < 50 and z_coord > -50 and x_coord < 50 and x_coord > -50:
 		var picked = safe_array.pick_random()
-		var child = set_cell(picked, z_coord, x_coord)
-		add_child(child)
+		set_cell(picked, z_coord, x_coord)
+
 			
 	elif current_spawn_cells < num_spawn_cells and ((z_coord > z_bound-20 and x_coord > x_bound - 20) or (z_coord < (z_bound *-1) + 20 and x_coord > x_bound -20) or (z_coord > z_bound -20 and x_bound < (x_bound *-1) + 20) or (z_coord < (z_bound *-1) +20) and x_coord < (x_coord * -1) +20):
 		var choose = probability.pick_random()
@@ -232,8 +234,8 @@ func set_cell(picked : int, z_coord: int, x_coord: int):
 		child.global_position = Vector3i(x_coord,0,z_coord)
 	elif picked == 2:
 		var child = twig.instantiate()
+		add_child(child)
 		child.global_position = Vector3i(x_coord,0,z_coord)
-		return child
 	elif picked == 3:
 		var child = dumb_grunt.instantiate()
 		add_child(child)
