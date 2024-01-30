@@ -15,6 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if filled_cans == num_gas_cans_to_win:
+		SignalManager.win_game.emit()
 		end_game_timer.start()
 		car_sound.play()
 		end_game_timer.start()
@@ -27,7 +28,7 @@ func fill_car():
 	filled_cans += 1
 
 func _on_end_game_timer_timeout():
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Menu_Scenes/victory_screen.tscn")
 
 func set_cans_to_win():

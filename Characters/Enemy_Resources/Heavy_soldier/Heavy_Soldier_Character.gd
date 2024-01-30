@@ -9,7 +9,10 @@ var player = null
 @onready var player_finder = $Player_Finder
 @onready var anim_tree = $Animation_State_Machine
 @onready var bullet_coords = $Heavy_Soldier_Master_Scene/RootNode/AKM_scene/Bullet_Coords
-@onready var shooting_timer = $shooting_timer
+@onready var medium_mode_shoot_timer = $medium_mode_shoot_timer
+@onready var hard_mode_shoot_timer = $hard_mode_shoot_timer
+@onready var easy_mode_shoot_timer = $easy_mode_shoot_timer
+
 @onready var enemy_hit_sound = $"Enemy Hit Sound"
 
 @onready var shoot_sound = $ShootSound
@@ -26,8 +29,13 @@ var current_health: int:
 		#if current_health / 2 < starting_health and is_half_health == false:
 			#Set_hit_animation
 		if current_health <= 0:
+			if SignalManager.difficulty == 1:
+				easy_mode_shoot_timer.stop()
+			elif SignalManager.difficulty == 2:
+				medium_mode_shoot_timer.stop()
+			elif SignalManager.difficulty == 3:
+				hard_mode_shoot_timer.stop()
 			SignalManager.grunt_death_sound.emit()
-			shooting_timer.stop()
 			anim_tree.set("parameters/conditions/is_dead", true)
 
 
@@ -91,15 +99,21 @@ func shoot_player(player_position: Vector3):
 func _on_line_of_sight_body_entered(body):
 	if body.is_in_group("player"):
 		if player != null:
-			shooting_timer.start()
+			if SignalManager.difficulty == 1:
+				easy_mode_shoot_timer.start()
+			elif SignalManager.difficulty == 2:
+				medium_mode_shoot_timer.start()
+			elif SignalManager.difficulty == 3:
+				hard_mode_shoot_timer.start()
+			else:
+				easy_mode_shoot_timer.start()
 
 func remove_heavy_soldier() -> void:
 		SignalManager.grunt_death_sound.emit()
 		remove_child(self)
 		queue_free()
 
-func _on_shooting_timer_timeout():
-	shoot_player(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+
 
 
 func _on_animation_state_machine_animation_finished(anim_name):
@@ -121,3 +135,15 @@ func set_starting_health():
 		current_health = 250
 	elif SignalManager.difficulty == 3:
 		current_health = 300
+
+
+func _on_hard_mode_shoot_timer_timeout():
+	shoot_player(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+
+
+func _on_easy_mode_shoot_timer_timeout():
+	shoot_player(Vector3(player.global_position.x, global_position.y, player.global_position.z))
+
+
+func _on_medium_mode_shoot_timer_timeout():
+	shoot_player(Vector3(player.global_position.x, global_position.y, player.global_position.z))

@@ -24,7 +24,8 @@ signal turn_to_player
 @onready var deposit_gas_sfx = $"Deposit Gas sfx"
 
 var is_paused : bool = false
-
+var game_lost : bool = false
+var game_won : bool = false
 var holding_gas_can : bool = false
 
 
@@ -34,6 +35,7 @@ var current_health: int:
 		current_health = health_in
 		health_label.text = "Health: " + str(current_health)
 		if current_health <= 0:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			get_tree().change_scene_to_file("res://Menu_Scenes/defeat_screen.tscn")
 		
 var current_speed = run_speed
@@ -59,16 +61,19 @@ func _ready():
 	rotation.z = 0
 	set_player_health()
 	
+	
 	$Head/Camera3D/DirectionIndicator.hide()
 	SignalManager.grunt_death_sound.connect(play_grunt_death_sound)
-	
+	SignalManager.win_game.connect(set_win_game)
 func _input(event):
+	
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x / 1000
 		$Head/Camera3D.rotation.x -= event.relative.y / 1000
 		$Head/Camera3D.rotation.x = clamp( $Head/Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90) )
-		
+	
 #	Getting the mouse movement for the weapon sway in the physics process
+
 	if event is InputEventMouseMotion:
 		mouse_relative_x = clamp(event.relative.x, -50, 50)
 		mouse_relative_y = clamp(event.relative.y, -50, 10)
@@ -239,8 +244,10 @@ func pauseMenu():
 	if is_paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
 		pause_menu.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Engine.time_scale = 0
 	is_paused = !is_paused
 
@@ -255,3 +262,6 @@ func set_player_health():
 		current_health = 175
 		health_pack_heal = 50
 	
+
+func set_win_game():
+	game_won = true
