@@ -9,7 +9,7 @@ extends Control
 @export var Music : AudioStream = null
 @export var Use_Video_Audio : bool = false
 @export var Video : VideoStream = null
-
+@onready var Anthem = $Anthem
 const section_time := 2.0
 const line_time := 0.3
 const base_speed := 70
@@ -92,18 +92,66 @@ var credits = [
 		"This work is based on 'Mighty Oak Trees' (https://sketchfab.com/3d-models/mighty-oak-trees-4f6ab5594a8a415aba3f958682b9ced5)",
 		"by Jagobo (https://sketchfab.com/Jagobo)",
 		"licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+		"Russian Flag",
+		"'Flag of Russia' (https://skfb.ly/6ZGRO) by Wittybacon ",
+		"is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/)."
 
+	],[
+		"Materials",
+		"Cracked Mud material",
+		"CC Attribute CC0 by Joao Paulo of 3dtextures.me and Qwertygiy",
+		"Diamond Steel Material",
+		"Qwertygiy; MIT; 2019-03-28"
+	
+	],[
+		"Pictures",
+		"Rambo Png wallpaper",
+		"https://wallpaperaccess.com/rambo",
+		"Rambo png image",
+		"Pngimg.com License - Attribution-NonCommercial 4.0 International",
+		"https://pngimg.com/image/31805",
+		"Broken Brick Wall Picture",
+		"https://www.pngkey.com/download/u2q8a9a9e6w7q8u2_broken-brick-png-transparent-broken-brick-wall-png/",
+		"Russian Flag PNG",
+		"Image by <a href='https://pixabay.com/users/motorolla-1945999/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1168880>Leonid</a>",
+		"from <a href=https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1168880'>Pixabay</a>",
+		"Blue Arrow PNG",
+"		<a href=https://pngtree.com/freepng/blue-arrow-gradient-button-icon_5464335.html>",
+		"png image from pngtree.com/</a>",
 	],[
 		"Music",
 		"Background Music",
-		"By Royalty Free Copyright Music"
+		"By Royalty Free Copyright Music",
+		"Star Spangled Banner",
+		"Russian National Anthem"
 	],[
 		"Sound Effects",
 		"Stick Snap 2 by Pixabay",
 		"9mm pisol shoot short reverb by Pixabay",
 		"Star Wars Death Noise by Free Sound Effects",
-		"https://www.youtube.com/watch?v=LesARFyzWqI&list=PLfQvBJO9MX4ClkeLKsnoweoV5f5RRmWxj&index=3"
+		"https://www.youtube.com/watch?v=LesARFyzWqI&list=PLfQvBJO9MX4ClkeLKsnoweoV5f5RRmWxj&index=3",
+		"Error Sound Effect",
+		"Attribution to u_8iuwl7zrk0",
+		"https://pixabay.com/sound-effects/search/error/?pagi=2",
+		"Healing Sound Effect",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=36672>Pixabay</a>",
+		"Car Sound",
+		"Sound Effect from <a href=https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=5998>Pixabay</a>",
+		"Explosion sfx",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6288>Pixabay</a>",
+		"Oof sfx",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=97698>Pixabay</a>",
+		"Homemade OOf",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=47509>Pixabay</a>",
+		"Womp Womp sfx",
+		"https://www.myinstants.com/en/instant/womp-womp-womp-55094/",
+		"CC Attribute to unofficialopinions",
+		"Victory sfx",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6185>Pixabay</a>",
+		"success sfx",
+		"Sound Effect from <a href=https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6297>Pixabay</a>"
 		
+
 		
 	],[
 		"Animations",
@@ -215,6 +263,7 @@ var credits = [
 ]
 
 func _ready():
+	Anthem.play()
 	colorrect.color = bg_color
 	videoplayer.set_stream(Video)
 	if !Use_Video_Audio:

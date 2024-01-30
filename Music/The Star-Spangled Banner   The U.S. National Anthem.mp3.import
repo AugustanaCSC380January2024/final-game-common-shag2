@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgm1xvwuok0tm"
+path="res://.godot/imported/The Star-Spangled Banner   The U.S. National Anthem.mp3-8f1272942558d86d3dc19bda6fbd5b35.mp3str"
+
+[deps]
+
+source_file="res://Music/The Star-Spangled Banner   The U.S. National Anthem.mp3"
+dest_files=["res://.godot/imported/The Star-Spangled Banner   The U.S. National Anthem.mp3-8f1272942558d86d3dc19bda6fbd5b35.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

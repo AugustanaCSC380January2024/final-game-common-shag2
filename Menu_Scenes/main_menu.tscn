@@ -145,7 +145,7 @@ grow_horizontal = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Gameplay Controls/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 15
+theme_override_constants/separation = 10
 
 [node name="Back to main2" type="Button" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -172,6 +172,12 @@ text = "Move Left : A or Left Key"
 layout_mode = 2
 theme = SubResource("Theme_2b1xg")
 text = "Right : D or Right Key"
+
+[node name="Move Right Label2" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Run : Shift + Movement
+"
 
 [node name="Jump Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
 layout_mode = 2
