@@ -1,9 +1,6 @@
 extends Node3D
 
-@onready var grid_map = $NavRegion_Pathfinding/Ground/GridMap
-@onready var ground = $NavRegion_Pathfinding/Ground
-@onready var player1 = $NavRegion_Pathfinding/CharacterBody3D
-@onready var nav_region_pathfinding = $NavRegion_Pathfinding
+
 
 
 
@@ -12,18 +9,18 @@ extends Node3D
 @export var grass : PackedScene
 @export var bush : PackedScene
 @export var twig : PackedScene
-@export var dumb_grunt : PackedScene
-@export var heavy_soldier : PackedScene
 @export var empty_cell : PackedScene
 @export var gas_can: PackedScene
 @export var health_kit: PackedScene
-
+@export var turret : PackedScene
 @export var animated_soldier : PackedScene
 
 @onready var hard_mode_timer = $"Hard Mode Timer"
 @onready var medium_mode_timer = $"Medium Mode Timer"
 @onready var easy_mode_timer = $"Easy Mode Timer"
-
+@onready var ground = $NavRegion_Pathfinding/Ground
+@onready var player1 = $NavRegion_Pathfinding/CharacterBody3D
+@onready var nav_region_pathfinding = $NavRegion_Pathfinding
 @onready var spawn_1 = $"Spawn Locations/Spawn1"
 @onready var spawn_2 = $"Spawn Locations/Spawn2"
 @onready var spawn_3 = $"Spawn Locations/Spawn3"
@@ -95,7 +92,7 @@ func create_map() -> void:
 			var child: Node3D = pick_cell(temp_z_coord, temp_x_coord)
 			child.global_position = Vector3i(temp_x_coord,0,temp_z_coord)
 			print(Vector3i(temp_x_coord,0,temp_z_coord))
-			grid_map.set_cell_item(Vector3i(temp_x_coord,0,temp_z_coord), 5)
+			#grid_map.set_cell_item(Vector3i(temp_x_coord,0,temp_z_coord), 5)
 			
 			
 	
@@ -120,20 +117,20 @@ func pick_cell(z_coord: int, x_coord: int) -> Node3D:
 			var child = twig.instantiate()
 			add_child(child)
 			return child
-		elif picked == 3:
-			var child = dumb_grunt.instantiate()
-			add_child(child)
-			var empty: Node3D = empty_cell.instantiate()
-			add_child(empty)
-			empty.global_position = Vector3i(x_coord, 0, z_coord)
-			return child
-		elif picked == 4:
-			var child = heavy_soldier.instantiate()
-			add_child(child)
-			var empty: Node3D = empty_cell.instantiate()
-			add_child(empty)
-			empty.global_position = Vector3i(x_coord, 0, z_coord)
-			return child
+		#elif picked == 3:
+			#var child = dumb_grunt.instantiate()
+		#	add_child(child)
+		#	var empty: Node3D = empty_cell.instantiate()
+		#	add_child(empty)
+		#	empty.global_position = Vector3i(x_coord, 0, z_coord)
+		#	return child
+		#elif picked == 4:
+		#	var child = heavy_soldier.instantiate()
+		#	add_child(child)
+		#	var empty: Node3D = empty_cell.instantiate()
+		#	add_child(empty)
+		#	empty.global_position = Vector3i(x_coord, 0, z_coord)
+		#	return child
 		elif picked == 5:
 			var child = empty_cell.instantiate()
 			add_child(child)
@@ -239,7 +236,7 @@ func set_cell(picked : int, z_coord: int, x_coord: int):
 		add_child(child)
 		child.global_position = Vector3i(x_coord,0,z_coord)
 	elif picked == 3:
-		var child = dumb_grunt.instantiate()
+		var child = turret.instantiate()
 		add_child(child)
 		child.global_position = Vector3i(x_coord,0,z_coord)
 		var empty: Node3D = empty_cell.instantiate()

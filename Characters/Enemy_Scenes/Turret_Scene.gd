@@ -8,6 +8,7 @@ signal death_sound_signal
 @onready var bullet_coordinates = $Bullet_coordinates
 @onready var pistol_shot = $Pistol_Shot
 
+@onready var shooting_turret_timer = $shooting_turret_timer
 
 @onready var line_of_sight = $Line_of_sight
 
@@ -16,12 +17,9 @@ signal death_sound_signal
 @export var max_turret_health : int
 
 
-
-
 var current_health: int:
 	set(health_in):
 		current_health = health_in
-		print(current_health)
 		if current_health <= 0:
 			remove_turret()
 			
@@ -31,7 +29,7 @@ var player_last_position : Vector3
 var player_in_detection : bool = false
 
 func _ready():
-	current_health = max_turret_health
+	set_start_health()
 	SignalManager.twig_player_position.connect(turn_to_twig_snap)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -98,20 +96,30 @@ func _on_shooting_turret_timer_timeout():
 func _on_enemy_hitbox_area_area_entered(area):
 	if area.is_in_group("Enemy_Detector_Area"):
 		player_in_detection = true
-
+	if area.is_in_group("bullet_area"):
+		current_health -= 18
 
 func _on_enemy_hitbox_area_area_exited(area):
 	if area.is_in_group("Enemy_Detector_Area"):
 		player_in_detection = false
+	
 
 
 func _on_line_of_sight_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_sight = true
-		shooting_timer.start()
+		shooting_turret_timer.start()
 
 
 func _on_line_of_sight_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_sight = false
-		shooting_timer.stop()
+		shooting_turret_timer.stop()
+
+func set_start_health():
+	if SignalManager.difficulty == 1:
+		current_health = 125
+	elif SignalManager.difficulty == 2:
+		current_health = 175
+	elif SignalManager.difficulty == 3:
+		current_health = 225

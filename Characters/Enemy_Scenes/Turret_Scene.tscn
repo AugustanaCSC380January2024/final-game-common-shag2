@@ -1,25 +1,31 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqgfs35piavbt"]
+[gd_scene load_steps=17 format=3 uid="uid://bqgfs35piavbt"]
 
 [ext_resource type="Script" path="res://Characters/Enemy_Scenes/Turret_Scene.gd" id="1_ifagj"]
 [ext_resource type="PackedScene" uid="uid://croga7shem1ub" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/9_mm_bullet.tscn" id="2_pwrqx"]
+[ext_resource type="Material" uid="uid://bt1yi4qhslfyh" path="res://Assets_and_textures/Materials/metal_material/materials/diamondPlateAluminum/diamondAluminum.tres" id="3_58suq"]
 [ext_resource type="AudioStream" uid="uid://je5pcgpw3oq6" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/9mm-pistol_sound.mp3" id="14_lj203"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r6t4o"]
+material = ExtResource("3_58suq")
 top_radius = 4.0
 bottom_radius = 4.0
 height = 4.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r6ct6"]
+material = ExtResource("3_58suq")
 top_radius = 3.0
 bottom_radius = 3.0
 height = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_gaqkv"]
+material = ExtResource("3_58suq")
 size = Vector3(4, 4, 3)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4xh0i"]
+material = ExtResource("3_58suq")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_103fd"]
+material = ExtResource("3_58suq")
 top_radius = 0.2
 bottom_radius = 0.2
 
@@ -36,6 +42,7 @@ data = PackedVector3Array(0, 2, 4, 0.3921, 2, 3.9807, 0, 1.2, 4, 0.3921, 2, 3.98
 size = Vector3(0.02, 0.02, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbati"]
+size = Vector3(8, 8, 8)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nkn2u"]
 top_radius = 10.0
@@ -90,12 +97,14 @@ stream = ExtResource("14_lj203")
 
 [node name="Bullet_coordinates" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.18557e-07, -1.91069e-14, 5, -4.37114e-07, -5, 0, 5, -4.37114e-07, -2.18557e-07, 0.0251428, 6.71422, 3.91204)
+visible = false
 mesh = SubResource("BoxMesh_dggij")
 skeleton = NodePath("")
 
 [node name="shooting_turret_timer" type="Timer" parent="."]
 
 [node name="Enemy_Hitbox_Area" type="Area3D" parent="." groups=["enemy_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.87052, 0)
 disable_mode = 2
 collision_layer = 8
 collision_mask = 8
