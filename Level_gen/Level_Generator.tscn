@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://snqt6qj5h2rt"]
+[gd_scene load_steps=23 format=3 uid="uid://snqt6qj5h2rt"]
 
 [ext_resource type="Script" path="res://Level_gen/Level_Generation.gd" id="1_6vgfj"]
 [ext_resource type="PackedScene" uid="uid://yuxuqb4xyr7d" path="res://Level_gen/level_gen_scenes/level_gen_watchtower.tscn" id="2_a5tt6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://0swvrc55l8j5" path="res://Level_gen/level_gen_scenes/level_gen_empty_cell.tscn" id="9_kl3j8"]
 [ext_resource type="PackedScene" uid="uid://caa2tr8h0m6o1" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.tscn" id="10_a0pfb"]
 [ext_resource type="PackedScene" uid="uid://dqvhpe43876vf" path="res://Level_gen/level_gen_scenes/level_gen_health_box.tscn" id="11_6cvsq"]
+[ext_resource type="PackedScene" uid="uid://4thm0iq5h6ua" path="res://Level_gen/level_gen_spawn_cell.tscn" id="12_mmke3"]
 [ext_resource type="MeshLibrary" uid="uid://gvtqoqqmmchf" path="res://Mesh_Libraries/level_Gen_Cells_Library_4.tres" id="12_nw75v"]
 [ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="13_0psun"]
 [ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="14_c6kv1"]
@@ -53,6 +54,8 @@ heavy_soldier = ExtResource("8_n8bx1")
 empty_cell = ExtResource("9_kl3j8")
 gas_can = ExtResource("10_a0pfb")
 health_kit = ExtResource("11_6cvsq")
+spawn_cell = ExtResource("12_mmke3")
+animated_soldier = ExtResource("16_5246g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 82.7389, 0)
@@ -64,7 +67,7 @@ shadow_enabled = true
 environment = SubResource("Environment_s1ffr")
 
 [node name="Player" parent="." instance=ExtResource("13_0psun")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 8.5943, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 4.5943, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_h8r1g")
@@ -86,7 +89,6 @@ mesh_library = ExtResource("12_nw75v")
 cell_size = Vector3(10, 2, 10)
 
 [node name="Car Escape Scene" parent="NavRegion_Pathfinding" instance=ExtResource("15_qcs15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("16_5246g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)

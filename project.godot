@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Final-game-common-shag"
-run/main_scene="res://Level_gen/Level_Generator.tscn"
+run/main_scene="res://Menu_Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
