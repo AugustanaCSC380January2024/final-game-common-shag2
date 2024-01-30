@@ -26,7 +26,15 @@ mesh = SubResource("BoxMesh_ph7ci")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Gen_Empty_Cell/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t4pd4")
 
-[node name="Spawn Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Easy Spawn Timer" type="Timer" parent="."]
+wait_time = 8.0
 
-[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
+[node name="Medium Spawn Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="Hard Spawn Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Easy Spawn Timer" to="." method="_on_easy_spawn_timer_timeout"]
+[connection signal="timeout" from="Medium Spawn Timer" to="." method="_on_medium_spawn_timer_timeout"]
+[connection signal="timeout" from="Hard Spawn Timer" to="." method="_on_hard_spawn_timer_timeout"]

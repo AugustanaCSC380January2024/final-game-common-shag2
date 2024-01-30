@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var grid_map = $NavRegion_Pathfinding/Ground/GridMap
 @onready var ground = $NavRegion_Pathfinding/Ground
-@onready var player1 = $Player
+@onready var player1 = $NavRegion_Pathfinding/CharacterBody3D
 @onready var nav_region_pathfinding = $NavRegion_Pathfinding
 
 
@@ -18,10 +18,16 @@ extends Node3D
 @export var gas_can: PackedScene
 @export var health_kit: PackedScene
 
-@export var spawn_cell : PackedScene
 @export var animated_soldier : PackedScene
 
+@onready var hard_mode_timer = $"Hard Mode Timer"
+@onready var medium_mode_timer = $"Medium Mode Timer"
+@onready var easy_mode_timer = $"Easy Mode Timer"
 
+@onready var spawn_1 = $"Spawn Locations/Spawn1"
+@onready var spawn_2 = $"Spawn Locations/Spawn2"
+@onready var spawn_3 = $"Spawn Locations/Spawn3"
+@onready var spawn_4 = $"Spawn Locations/Spawn4"
 
 
 var x_bound : int
@@ -39,10 +45,11 @@ var num_spawn_cells : int
 var current_spawn_cells : int = 0
 
 func _ready():
-	SignalManager.difficulty_mode.connect(set_mode_id)
-
+	mode_id = SignalManager.difficulty
+	set_correct_timer()
 	#create_map()
-	create_updated_map(mode_id)
+	create_updated_map()
+	
 	#nav_region_pathfinding.bake_navigation_mesh(true)
 
 
@@ -50,6 +57,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+		
+	
 	#Pause Menu
 #	if Input.is_action_just_pressed("Pause"):
 #		pauseMenu()
@@ -154,7 +163,7 @@ func pick_cell(z_coord: int, x_coord: int) -> Node3D:
 			add_child(child)
 			return child
 
-func create_updated_map(Mode : int) -> void:
+func create_updated_map() -> void:
 
 	var cell_size: Vector3i = ground.size
 	var num_rows = cell_size.z / 10
@@ -199,25 +208,18 @@ func pick_updated_cell(x_coord: int, z_coord: int):
 	elif z_coord < 50 and z_coord > -50 and x_coord < 50 and x_coord > -50:
 		var picked = safe_array.pick_random()
 		set_cell(picked, z_coord, x_coord)
-
-			
-	elif current_spawn_cells < num_spawn_cells and ((z_coord > z_bound-20 and x_coord > x_bound - 20) or (z_coord < (z_bound *-1) + 20 and x_coord > x_bound -20) or (z_coord > z_bound -20 and x_bound < (x_bound *-1) + 20) or (z_coord < (z_bound *-1) +20) and x_coord < (x_coord * -1) +20):
-		var choose = probability.pick_random()
-		if choose == 1:
-			var child = spawn_cell.instantiate()
-			add_child(child)
-			child.global_position = Vector3i(x_coord,0,z_coord)
-			current_spawn_cells += 1
-			print("Spawned Spawn Cell")
-		else:
-			var picked = number_array.pick_random()
-			set_cell(picked, x_coord, z_coord)
-	elif current_spawn_cells == 0 and (z_coord > z_bound - 10 and x_coord > x_bound - 10):
-		var child = spawn_cell.instantiate()
+	elif z_coord > 94 and x_coord >94:
+		var child = empty_cell.instantiate()
 		add_child(child)
-		child.global_position = Vector3i(x_coord,0,z_coord)
-		current_spawn_cells += 1
-		print("Force Spawned Spawn Cell")
+	elif z_coord > 94 and x_coord < -94:
+		var child = empty_cell.instantiate()
+		add_child(child)
+	elif z_coord < -94 and x_coord < -94:
+		var child = empty_cell.instantiate()
+		add_child(child)
+	elif z_coord  < -94 and x_coord > 94:
+		var child = empty_cell.instantiate()
+		add_child(child)
 	else:
 		var picked = number_array.pick_random()
 		set_cell(picked, x_coord, z_coord)
@@ -271,16 +273,44 @@ func set_cell(picked : int, z_coord: int, x_coord: int):
 		child.global_position = Vector3i(x_coord,0,z_coord)
 
 
-func set_mode_id(difficulty : int):
-	mode_id = difficulty
-	set_spawn_cells(mode_id)
 
-func set_spawn_cells(difficulty : int):
-	if difficulty == 1:
-		num_spawn_cells = 3
-	elif difficulty == 2:
-		num_spawn_cells = 4
-	elif num_spawn_cells == 3:
-		num_spawn_cells = 5
+
+func set_correct_timer():
+	if SignalManager.difficulty == 1:
+		easy_mode_timer.start()
+		print("Easy_Mode")
+	elif SignalManager.difficulty == 2:
+		medium_mode_timer.start()
+		print("Medium_Mode")
+	elif SignalManager.difficulty == 3:
+		hard_mode_timer.start()
+		print("hard mode")
 	else:
-		num_spawn_cells = 3
+		print("shouldnt happen")
+		easy_mode_timer.start()
+
+
+func _on_easy_mode_timer_timeout():
+	make_enemy(spawn_1.global_position)
+	make_enemy(spawn_2.global_position)
+	make_enemy(spawn_3.global_position)
+	make_enemy(spawn_4.global_position)
+	
+
+func _on_medium_mode_timer_timeout():
+	make_enemy(spawn_1.global_position)
+	make_enemy(spawn_2.global_position)
+	make_enemy(spawn_3.global_position)
+	make_enemy(spawn_4.global_position)
+
+
+func _on_hard_mode_timer_timeout():
+	make_enemy(spawn_1.global_position)
+	make_enemy(spawn_2.global_position)
+	make_enemy(spawn_3.global_position)
+	make_enemy(spawn_4.global_position)
+
+func make_enemy(spawn_point : Vector3i):
+	var child = animated_soldier.instantiate()
+	child.position = spawn_point
+	nav_region_pathfinding.add_child(child)

@@ -10,7 +10,7 @@ var filled_cans = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalManager.connect("deposit_gas_can", fill_car)
-
+	set_cans_to_win()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,3 +28,11 @@ func fill_car():
 
 func _on_end_game_timer_timeout():
 	pass # Replace with function body.
+
+func set_cans_to_win():
+	if SignalManager.difficulty == 1:
+		num_gas_cans_to_win == 5;
+	elif SignalManager.difficulty == 2:
+		num_gas_cans_to_win == 8
+	elif SignalManager.difficulty == 3:
+		num_gas_cans_to_win == 12

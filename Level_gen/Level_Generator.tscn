@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://snqt6qj5h2rt"]
+[gd_scene load_steps=22 format=3 uid="uid://snqt6qj5h2rt"]
 
 [ext_resource type="Script" path="res://Level_gen/Level_Generation.gd" id="1_6vgfj"]
 [ext_resource type="PackedScene" uid="uid://yuxuqb4xyr7d" path="res://Level_gen/level_gen_scenes/level_gen_watchtower.tscn" id="2_a5tt6"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://0swvrc55l8j5" path="res://Level_gen/level_gen_scenes/level_gen_empty_cell.tscn" id="9_kl3j8"]
 [ext_resource type="PackedScene" uid="uid://caa2tr8h0m6o1" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.tscn" id="10_a0pfb"]
 [ext_resource type="PackedScene" uid="uid://dqvhpe43876vf" path="res://Level_gen/level_gen_scenes/level_gen_health_box.tscn" id="11_6cvsq"]
-[ext_resource type="PackedScene" uid="uid://4thm0iq5h6ua" path="res://Level_gen/level_gen_spawn_cell.tscn" id="12_mmke3"]
 [ext_resource type="MeshLibrary" uid="uid://gvtqoqqmmchf" path="res://Mesh_Libraries/level_Gen_Cells_Library_4.tres" id="12_nw75v"]
 [ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="13_0psun"]
 [ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="14_c6kv1"]
@@ -42,7 +41,6 @@ agent_max_climb = 4.0
 agent_max_slope = 80.0
 
 [node name="Level_Gen" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 13)
 script = ExtResource("1_6vgfj")
 watchtower = ExtResource("2_a5tt6")
 tree_cell = ExtResource("3_ic1ue")
@@ -54,7 +52,6 @@ heavy_soldier = ExtResource("8_n8bx1")
 empty_cell = ExtResource("9_kl3j8")
 gas_can = ExtResource("10_a0pfb")
 health_kit = ExtResource("11_6cvsq")
-spawn_cell = ExtResource("12_mmke3")
 animated_soldier = ExtResource("16_5246g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -73,12 +70,11 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 4.5943, 0)
 stream = ExtResource("14_h8r1g")
 autoplay = true
 
-[node name="NavRegion_Pathfinding" type="NavigationRegion3D" parent="."]
+[node name="NavRegion_Pathfinding" type="NavigationRegion3D" parent="." groups=["nav_region"]]
 navigation_mesh = SubResource("NavigationMesh_ocv6q")
 
 [node name="Ground" type="CSGBox3D" parent="NavRegion_Pathfinding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-visible = false
 material_override = ExtResource("14_c6kv1")
 snap = 1.0
 use_collision = true
@@ -91,6 +87,29 @@ cell_size = Vector3(10, 2, 10)
 
 [node name="Car Escape Scene" parent="NavRegion_Pathfinding" instance=ExtResource("15_qcs15")]
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("16_5246g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)
-player_path = NodePath("../Player")
+[node name="Easy Mode Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Medium Mode Timer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="Hard Mode Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Spawn Locations" type="Node3D" parent="."]
+
+[node name="Spawn1" type="Node3D" parent="Spawn Locations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, -95)
+
+[node name="Spawn2" type="Node3D" parent="Spawn Locations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, -95)
+
+[node name="Spawn3" type="Node3D" parent="Spawn Locations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 95)
+
+[node name="Spawn4" type="Node3D" parent="Spawn Locations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, 95)
+
+[connection signal="timeout" from="Easy Mode Timer" to="." method="_on_easy_mode_timer_timeout"]
+[connection signal="timeout" from="Medium Mode Timer" to="." method="_on_medium_mode_timer_timeout"]
+[connection signal="timeout" from="Hard Mode Timer" to="." method="_on_hard_mode_timer_timeout"]

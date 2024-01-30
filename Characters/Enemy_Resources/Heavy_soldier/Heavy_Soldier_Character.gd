@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var player = null
 
-@export var player_path : NodePath
+@export var player_path := "/root/Level_Gen/Player"
 @export var starting_health : int = 250
 @export var bullet_762 : PackedScene
 
@@ -14,10 +14,6 @@ var player = null
 
 @onready var shoot_sound = $ShootSound
 
-#if alert is true, then heavy soldier sees the player
-var alert : bool = false
-#opposite of alert
-
 var state_machine
 var is_aiming : bool
 var is_half_health : bool
@@ -27,8 +23,6 @@ var buffer_distance : float = 10
 var current_health: int:
 	set(health_in):
 		current_health = health_in
-		print("damaged")
-		print(current_health)
 		#if current_health / 2 < starting_health and is_half_health == false:
 			#Set_hit_animation
 		if current_health <= 0:
@@ -96,11 +90,8 @@ func shoot_player(player_position: Vector3):
 
 func _on_line_of_sight_body_entered(body):
 	if body.is_in_group("player"):
-		print("I See You")
 		if player != null:
 			shooting_timer.start()
-		else:
-			print("player null???")
 
 func remove_heavy_soldier() -> void:
 		SignalManager.grunt_death_sound.emit()

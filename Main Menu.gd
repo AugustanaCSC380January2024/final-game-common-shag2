@@ -47,11 +47,11 @@ func _on_quit_button_pressed():
 
 
 func _on_easy_mode_button_pressed():
-	SignalManager.difficulty_mode.emit(1)
+	SignalManager.difficulty = 1
 	get_tree().change_scene_to_file("res://Level_gen/Level_Generator.tscn")
 
 func _on_hard_mode_button_pressed():
-	SignalManager.difficulty_mode.emit(3)
+	SignalManager.difficulty = 3
 	get_tree().change_scene_to_file("res://Level_gen/Level_Generator.tscn")
 
 

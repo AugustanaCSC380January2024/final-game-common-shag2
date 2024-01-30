@@ -7,3 +7,4 @@ signal grunt_death_sound
 signal twig_detection_timer
 signal twig_player_position(player_position : Vector3)
 signal difficulty_mode(mode : int)
+var difficulty : int
