@@ -88,13 +88,13 @@ cell_size = Vector3(10, 2, 10)
 [node name="Car Escape Scene" parent="NavRegion_Pathfinding" instance=ExtResource("15_qcs15")]
 
 [node name="Easy Mode Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 12.0
 
 [node name="Medium Mode Timer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 10.0
 
 [node name="Hard Mode Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 8.0
 
 [node name="Spawn Locations" type="Node3D" parent="."]
 
