@@ -42,10 +42,10 @@ script = ExtResource("1_yddcg")
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fh74a")
 layout_mode = 0
-offset_left = -377.0
-offset_top = -225.416
-offset_right = 1603.0
-offset_bottom = 494.584
+offset_left = -710.5
+offset_top = -450.076
+offset_right = 1269.5
+offset_bottom = 629.924
 
 [node name="Button_Container" type="MarginContainer" parent="."]
 layout_mode = 0

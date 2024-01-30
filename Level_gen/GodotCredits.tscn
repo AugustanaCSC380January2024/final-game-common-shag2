@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmmk31d282i46"]
 
 [ext_resource type="Script" path="res://Credits Scene Package/CREDITS/GodotCredits.gd" id="1_tm5ul"]
-[ext_resource type="PackedScene" uid="uid://bsxpfhtqsuf8h" path="res://Levels/credits_screen.tscn" id="2_ky0et"]
+[ext_resource type="PackedScene" uid="uid://bsxpfhtqsuf8h" path="res://Menu_Scenes/credits_screen.tscn" id="2_ky0et"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3

@@ -18,6 +18,7 @@ signal turn_to_player
 @onready var grab_area = $Grab_Area
 @onready var player_hitbox = $Player_Hitbox
 @onready var pause_menu = $"Head/Camera3D/Pause Menu"
+@onready var healed = $Healed
 
 @onready var death_sound_grunt = $"Death Sound Grunt"
 var is_paused : bool = false
@@ -145,6 +146,8 @@ func _physics_process(delta):
 				print("Gas Can Grabbed")
 				holding_gas_can = true
 				gas_can_standalone.visible = true
+				healed.play()
+				
 				deposit_gas_can_to_car.emit()
 				#SignalManager.emit_signal("pick_up_gas_can")
 				

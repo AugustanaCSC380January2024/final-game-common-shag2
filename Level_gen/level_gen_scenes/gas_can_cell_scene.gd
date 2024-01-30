@@ -3,6 +3,7 @@ extends Node3D
 @onready var gas_can = $Gas_Can_Cell/Gas_Can
 @onready var pick_up_area = $Gas_Can_Cell/Gas_Can/Pick_Up_Area
 @onready var explosion_particles = $ExplosionParticles
+@onready var explosion = $Explosion
 
 var player : CharacterBody3D
 var has_exploded : bool = false
@@ -24,6 +25,7 @@ func _on_explosion_area_area_entered(area):
 		#explode 
 		if has_exploded == false:
 			explosion_particles.emitting = true
+			explosion.play()
 			gas_can.visible = false
 			pick_up_area.remove_from_group("gas_can_area")
 			has_exploded = true

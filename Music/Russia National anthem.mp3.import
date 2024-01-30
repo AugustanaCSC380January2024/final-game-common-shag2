@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crltv15p50qof"
+path="res://.godot/imported/Russia National anthem.mp3-0565b51f34f3dd68b505b785f5386743.mp3str"
+
+[deps]
+
+source_file="res://Music/Russia National anthem.mp3"
+dest_files=["res://.godot/imported/Russia National anthem.mp3-0565b51f34f3dd68b505b785f5386743.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

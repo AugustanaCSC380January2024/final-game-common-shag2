@@ -23,9 +23,10 @@ func _on_bullet_area_area_entered(area):
 	if area.is_in_group("enemy_area"):
 		area.get_parent().current_health -= damage
 		queue_free()
-		remove_child(self)
+		#emove_child(self)
 	if area.is_in_group("enemy_hitbox"):
-		area.get_parent().get_parent().current_health -= damage
+		
+	#	area.get_parent().current_health -= damage
 		queue_free()
 		remove_child(self)
 	

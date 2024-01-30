@@ -27,13 +27,13 @@ var current_health: int:
 	set(health_in):
 		current_health = health_in
 		print("damaged")
+		print(current_health)
 		#if current_health / 2 < starting_health and is_half_health == false:
 			#Set_hit_animation
 		if current_health <= 0:
 			SignalManager.grunt_death_sound.emit()
-			anim_tree.set("parameters/conditions/Walking_to_dead", true)
-			anim_tree.set("parameters/conditions/dead_down_to_aim", true)
-			anim_tree.set("parameters/conditions/Shoot_to_dead", true)
+			anim_tree.set("parameters/conditions/is_dead", true)
+
 
 const SPEED = 2.0
 
@@ -49,12 +49,12 @@ func _process(delta):
 	match state_machine.get_current_node():
 		"Down_To_Aim":
 			pass
-		"Walking_Aimed":
+		"Walking":
 			player_finder.set_target_position(player.global_transform.origin)
 			var next_nav_point = player_finder.get_next_path_position()
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-		"Idle_Shooting":
+		"Idle_Aimed":
 			player_finder.set_target_position(player.global_transform.origin)
 			var next_nav_point = player_finder.get_next_path_position()
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
@@ -65,8 +65,8 @@ func _process(delta):
 	
 	#Conditions
 	#anim_tree.set("parameters/conditions/Aim_to-walking", !is_target_in_shooting_range())
-	anim_tree.set("parameters/conditions/target_in_range", is_target_in_shooting_range())
-	anim_tree.set("parameters/conditions/target_not_in_buffer", !is_target_in_buffer_distance())
+	anim_tree.set("parameters/conditions/In_Buffer", is_target_in_buffer_distance())
+	anim_tree.set("parameters/conditions/Left_Buffer", !is_target_in_buffer_distance())
 	
 	
 	move_and_slide()
@@ -101,6 +101,7 @@ func _on_line_of_sight_body_entered(body):
 			print("player null???")
 
 func remove_heavy_soldier() -> void:
+		SignalManager.grunt_death_sound.emit()
 		remove_child(self)
 		queue_free()
 
@@ -115,6 +116,7 @@ func _on_animation_state_machine_animation_finished(anim_name):
 
 func _on_collision_area_box_area_entered(area):
 	if area.is_in_group("bullet_area"):
-		area.get_parent().get_parent().current_health -= 18
-		queue_free()
-		remove_child(self)
+		current_health -= 18
+		print("enemy been shot")
+		#queue_free()
+		#remove_child(self)

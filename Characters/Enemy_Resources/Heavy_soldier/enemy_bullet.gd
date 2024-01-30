@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var speed := 30.0
-@export var damage:= 18
+@export var damage:= 14
 
 @onready var enemy_bullet_area = $Enemy_Bullet_Area
 
