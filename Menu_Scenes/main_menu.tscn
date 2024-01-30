@@ -1,13 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbf7cplmttc45"]
+[gd_scene load_steps=10 format=3 uid="uid://cbf7cplmttc45"]
 
 [ext_resource type="Script" path="res://Main Menu.gd" id="1_ee43w"]
 [ext_resource type="Texture2D" uid="uid://dx77ymclnfche" path="res://Menu_Scenes/Images For Menus/Rambo Russian Rampage.png" id="2_txtr2"]
 [ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="3_db443"]
 [ext_resource type="AudioStream" uid="uid://crltv15p50qof" path="res://Music/Russia National anthem.mp3" id="4_ycaf2"]
+[ext_resource type="FontFile" uid="uid://nlbjy1mmrpjh" path="res://Assets_and_textures/Fonts/OpenSans-SemiBold.ttf" id="6_s7tge"]
 
 [sub_resource type="Theme" id="Theme_fbgg7"]
 default_font = ExtResource("3_db443")
 default_font_size = 72
+
+[sub_resource type="Theme" id="Theme_7q0ul"]
+default_font = ExtResource("3_db443")
+default_font_size = 72
+
+[sub_resource type="Theme" id="Theme_2b1xg"]
+default_font = ExtResource("6_s7tge")
+default_font_size = 34
+
+[sub_resource type="Theme" id="Theme_3mxd3"]
+default_font = ExtResource("6_s7tge")
+default_font_size = 56
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -69,11 +82,18 @@ text = "Quit
 
 [node name="Mode Containors" type="VBoxContainer" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 270.0
-offset_top = 232.0
-offset_right = 850.0
-offset_bottom = 348.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -106.0
+offset_right = 305.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 50
 
 [node name="Mode Container" type="HBoxContainer" parent="Mode Containors"]
@@ -85,6 +105,12 @@ layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 disabled = true
 text = "Easy Mode"
+
+[node name="Medium Mode Button" type="Button" parent="Mode Containors/Mode Container"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+disabled = true
+text = "Medium Mode"
 
 [node name="Hard Mode Button" type="Button" parent="Mode Containors/Mode Container"]
 layout_mode = 2
@@ -99,10 +125,125 @@ theme = SubResource("Theme_fbgg7")
 disabled = true
 text = "Back To Main Menu"
 
+[node name="Gameplay Controls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 594.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Gameplay Controls"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Gameplay Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Back to main2" type="Button" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_7q0ul")
+disabled = true
+text = "Back To Main Menu"
+
+[node name="Forwards Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Forwards : W or Up Key"
+
+[node name="Backwards Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Backwards : S or Down Key"
+
+[node name="Move Left Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Move Left : A or Left Key"
+
+[node name="Move Right Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Right : D or Right Key"
+
+[node name="Jump Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Jump : Space Bar
+"
+
+[node name="Crouch Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Crouch : Shift key"
+
+[node name="Flashlight Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Toggle Flashlight : F"
+
+[node name="Reload Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Relaod : R
+"
+
+[node name="Quit Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Exit the Game : Esc Key"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Gameplay Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 36
+
+[node name="Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_3mxd3")
+text = "Controls and Keys"
+
+[node name="Shoot Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Shooting : Left Mouse Click"
+
+[node name="Grab Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grab : G, When Close Enough"
+
+[node name="Grabbable Objects Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Grabbable Objects: 
+Health Kit, Gas Cans"
+
+[node name="Grabbable Objects Label2" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Deposit Gas Can : G,
+With Gas Can
+at Escape Car"
+
+[node name="Quit Label" type="Label" parent="Gameplay Controls/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_2b1xg")
+text = "Pause Menu : P"
+
 [connection signal="pressed" from="Menu Container/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu Container/Options Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Menu Container/Credits Button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Menu Container/Quit Button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Mode Containors/Mode Container/Easy Mode Button" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="Mode Containors/Mode Container/Medium Mode Button" to="." method="_on_medium_mode_button_pressed"]
 [connection signal="pressed" from="Mode Containors/Mode Container/Hard Mode Button" to="." method="_on_hard_mode_button_pressed"]
 [connection signal="pressed" from="Mode Containors/Back To Main" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="Gameplay Controls/HBoxContainer/VBoxContainer/Back to main2" to="." method="_on_back_to_main_2_pressed"]

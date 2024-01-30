@@ -6,8 +6,11 @@ extends Control
 @onready var credits_button = $"Menu Container/Credits Button"
 @onready var quit_button = $"Menu Container/Quit Button"
 @onready var easy_mode_button = $"Mode Containors/Mode Container/Easy Mode Button"
+@onready var medium_mode_button = $"Mode Containors/Mode Container/Medium Mode Button"
 @onready var hard_mode_button = $"Mode Containors/Mode Container/Hard Mode Button"
 @onready var back_to_main = $"Mode Containors/Back To Main"
+@onready var gameplay_controls = $"Gameplay Controls"
+@onready var back_to_main2 = $"Gameplay Controls/HBoxContainer/VBoxContainer/Back to main"
 
 
 
@@ -32,14 +35,21 @@ func _on_play_button_pressed():
 	credits_button.disabled = true
 	quit_button.disabled = true
 	easy_mode_button.disabled = false
+	medium_mode_button.disabled = false
 	hard_mode_button.disabled = false
 	back_to_main.disabled = false
 	
 func _on_options_button_pressed():
-	get_tree().change_scene_to_file("res://Menu_Scenes/Gameplay Controls.tscn")
+	gameplay_controls.show()
+	back_to_main2.disabled = false
+	menu_container.visible = false
+	play_button.disabled = true
+	options_button.disabled = true
+	credits_button.disabled = true
+	quit_button.disabled = true
 
 func _on_credits_button_pressed():
-	get_tree().change_scene_to_file("res://Menu_Scenes/credits_screen.tscn")
+	get_tree().change_scene_to_file("res://Level_gen/GodotCredits.tscn")
 
 
 func _on_quit_button_pressed():
@@ -49,7 +59,9 @@ func _on_quit_button_pressed():
 func _on_easy_mode_button_pressed():
 	SignalManager.difficulty = 1
 	get_tree().change_scene_to_file("res://Level_gen/Level_Generator.tscn")
-
+func _on_medium_mode_button_pressed():
+	SignalManager.difficulty = 2
+	get_tree().change_scene_to_file("res://Level_gen/Level_Generator.tscn")
 func _on_hard_mode_button_pressed():
 	SignalManager.difficulty = 3
 	get_tree().change_scene_to_file("res://Level_gen/Level_Generator.tscn")
@@ -63,5 +75,19 @@ func _on_back_to_main_pressed():
 	credits_button.disabled = false
 	quit_button.disabled = false
 	easy_mode_button.disabled = true
+	medium_mode_button.disabled = true
 	hard_mode_button.disabled = true
 	back_to_main.disabled = true
+
+
+func _on_back_to_main_2_pressed():
+	gameplay_controls.hide()
+	back_to_main2.disabled = true
+	menu_container.visible = true
+	play_button.disabled = false
+	options_button.disabled = false
+	credits_button.disabled = false
+	quit_button.disabled = false
+
+
+
