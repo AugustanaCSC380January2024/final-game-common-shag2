@@ -154,7 +154,6 @@ func _physics_process(delta):
 		var overlaps = grab_area.get_overlapping_areas()
 		for overlap in overlaps:
 			if overlap.is_in_group("gas_can_area"):
-				print("Gas Can Grabbed")
 				holding_gas_can = true
 				gas_can_standalone.visible = true
 				
@@ -164,7 +163,6 @@ func _physics_process(delta):
 				
 			if overlap.is_in_group("interact"):
 				if holding_gas_can == true:
-					print("Filling Car...")
 					gas_can_standalone.visible = false
 					SignalManager.emit_signal("deposit_gas_can")
 					deposit_gas_sfx.play()
@@ -178,7 +176,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		footstep_sound(true)
 		if on_ground == false:
-			print("landing velocity: " , landing_velocity)
 			$LandSound.play()
 			on_ground = true
 	else:

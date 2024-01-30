@@ -65,14 +65,10 @@ func create_map() -> void:
 	var cell_size: Vector3i = ground.size
 	var num_rows = cell_size.z / 10
 	var num_cols = cell_size.x / 10
-	print(num_rows)
-	print(num_cols)
 	var cell_z_coord = cell_size.z / 2 *-1
 	cell_z_coord += 5
-	print(cell_z_coord)
 	var cell_x_coord = cell_size.x / 2 *-1
 	cell_x_coord += 5
-	print(cell_x_coord)
 	
 	var neg_z_bound = cell_size.z / 2 *-1
 	var pos_z_bound = cell_size.z / 2
@@ -91,7 +87,6 @@ func create_map() -> void:
 				temp_x_coord = cell_x_coord + (col*10)
 			var child: Node3D = pick_cell(temp_z_coord, temp_x_coord)
 			child.global_position = Vector3i(temp_x_coord,0,temp_z_coord)
-			print(Vector3i(temp_x_coord,0,temp_z_coord))
 			#grid_map.set_cell_item(Vector3i(temp_x_coord,0,temp_z_coord), 5)
 			
 			
@@ -186,9 +181,6 @@ func create_updated_map() -> void:
 			else:
 				temp_x_coord = cell_x_coord + (col*10)
 			pick_updated_cell(temp_z_coord, temp_x_coord)
-			#child.global_position = Vector3i(temp_x_coord,0,temp_z_coord)
-			#print(Vector3i(temp_x_coord,0,temp_z_coord))
-			#grid_map.set_cell_item(Vector3i(temp_x_coord,0,temp_z_coord), 5)
 
 
 
@@ -196,8 +188,6 @@ func create_updated_map() -> void:
 
 
 func pick_updated_cell(x_coord: int, z_coord: int):
-#	print("X coord " + str(x_coord))
-#	print("Z coord " + str(z_coord))
 	if z_coord < 15 and z_coord > -15 and x_coord < 15 and x_coord > -15:
 		var child = empty_cell.instantiate()
 		add_child(child)
@@ -275,15 +265,11 @@ func set_cell(picked : int, z_coord: int, x_coord: int):
 func set_correct_timer():
 	if SignalManager.difficulty == 1:
 		easy_mode_timer.start()
-		print("Easy_Mode")
 	elif SignalManager.difficulty == 2:
 		medium_mode_timer.start()
-		print("Medium_Mode")
 	elif SignalManager.difficulty == 3:
 		hard_mode_timer.start()
-		print("hard mode")
 	else:
-		print("shouldnt happen")
 		easy_mode_timer.start()
 
 

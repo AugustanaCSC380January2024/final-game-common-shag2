@@ -35,7 +35,6 @@ func _on_bullet_area_area_entered(area):
 func _on_bullet_area_body_entered(body):
 	if body.is_in_group("Heavy_Soldier_Body"):
 		body.get_parent().current_health -= damage
-		print("Player Shot Me")
 		queue_free()
 		remove_child(self)
 	#if body.is_in_group("player"):

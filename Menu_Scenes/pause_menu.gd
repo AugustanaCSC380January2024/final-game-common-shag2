@@ -104,7 +104,6 @@ func on_quit_game_button_action():
 	
 	
 func on_resume_button_action():
-	print("Sending Unpause")
 	main.pauseMenu()
 	
 func on_gameplay_controls_action():

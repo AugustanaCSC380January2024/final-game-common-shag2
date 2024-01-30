@@ -19,6 +19,6 @@ func _on_area_3d_body_entered(body):
 		twig_snap_audio.play()
 		SignalManager.twig_detection_timer.emit()
 		SignalManager.twig_player_position.emit(body.global_position)
-		print("Emmitted Signal")
+
 	
 	

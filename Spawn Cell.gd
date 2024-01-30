@@ -20,15 +20,11 @@ func _process(delta):
 func set_correct_timer():
 	if SignalManager.difficulty == 1:
 		easy_spawn_timer.start()
-		print("Easy_Mode")
 	elif SignalManager.difficulty == 2:
 		medium_spawn_timer.start()
-		print("Medium_Mode")
 	elif SignalManager.difficulty == 3:
 		hard_spawn_timer.start()
-		print("hard mode")
 	else:
-		print("shouldnt happen")
 		easy_spawn_timer.start()
 
 
