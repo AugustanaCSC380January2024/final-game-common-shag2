@@ -21,6 +21,8 @@ signal turn_to_player
 @onready var healed = $Healed
 @onready var player_hit_sound = $"Player Hit Sound"
 @onready var death_sound_grunt = $"Death Sound Grunt"
+@onready var deposit_gas_sfx = $"Deposit Gas sfx"
+
 var is_paused : bool = false
 
 var holding_gas_can : bool = false
@@ -32,7 +34,7 @@ var current_health: int:
 		current_health = health_in
 		health_label.text = "Health: " + str(current_health)
 		if current_health <= 0:
-			print("Game Over")
+			get_tree().change_scene_to_file("res://Menu_Scenes/defeat_screen.tscn")
 		
 var current_speed = run_speed
 var remaining_air_jumps = air_jumps
@@ -55,7 +57,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	rotation.x = 0
 	rotation.z = 0
-	current_health = max_player_health
+	set_player_health()
+	
 	$Head/Camera3D/DirectionIndicator.hide()
 	SignalManager.grunt_death_sound.connect(play_grunt_death_sound)
 	
@@ -156,6 +159,7 @@ func _physics_process(delta):
 					print("Filling Car...")
 					gas_can_standalone.visible = false
 					SignalManager.emit_signal("deposit_gas_can")
+					deposit_gas_sfx.play()
 					holding_gas_can = false
 					
 			if overlap.is_in_group("health_pickup_area"):
@@ -233,3 +237,15 @@ func pauseMenu():
 		pause_menu.show()
 		Engine.time_scale = 0
 	is_paused = !is_paused
+
+func set_player_health():
+	if SignalManager.difficulty == 1:
+		current_health = 400
+		health_pack_heal = 125
+	elif SignalManager.difficulty == 2:
+		current_health = 250
+		health_pack_heal = 100
+	elif SignalManager.difficulty == 3:
+		current_health = 175
+		health_pack_heal = 50
+	

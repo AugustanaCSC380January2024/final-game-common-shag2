@@ -1,4 +1,13 @@
-[gd_scene format=3 uid="uid://d2hjl2j0gno74"]
+[gd_scene load_steps=6 format=3 uid="uid://d2hjl2j0gno74"]
+
+[ext_resource type="Script" path="res://Menu_Scenes/defeat_screen.gd" id="1_3qjly"]
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="1_5o6se"]
+[ext_resource type="Texture2D" uid="uid://bcytqst3kinb4" path="res://Menu_Scenes/Images For Menus/rambo.jpg" id="1_vg7w0"]
+[ext_resource type="AudioStream" uid="uid://d0450tym501ku" path="res://Assets_and_textures/Audio/downer_noise.mp3" id="4_aj1ev"]
+
+[sub_resource type="Theme" id="Theme_fbgg7"]
+default_font = ExtResource("1_5o6se")
+default_font_size = 72
 
 [node name="Defeat Screen" type="Control"]
 layout_mode = 3
@@ -7,17 +16,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3qjly")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.0
+offset_top = -40.5
+offset_right = 382.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Retry Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Retry"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Main Menu" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Main Menu"
+
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Credits
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(974, 587)
+scale = Vector2(2, 2)
+texture = ExtResource("1_vg7w0")
+
+[node name="Womp Womp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aj1ev")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Retry Button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]

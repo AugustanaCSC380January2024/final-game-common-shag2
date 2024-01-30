@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqkl3wuhhaky5"]
+
+[ext_resource type="Texture2D" uid="uid://dgau8pysanaxo" path="res://Menu_Scenes/Images For Menus/rambo3.jpg" id="1_fniq1"]
+[ext_resource type="Script" path="res://Menu_Scenes/victory_screen.gd" id="1_mr3ip"]
+[ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="2_hp7qt"]
+[ext_resource type="AudioStream" uid="uid://bmj7qqq5bvxb" path="res://Assets_and_textures/Audio/victory_sfx.mp3" id="4_38gp8"]
+
+[sub_resource type="Theme" id="Theme_fbgg7"]
+default_font = ExtResource("2_hp7qt")
+default_font_size = 72
+
+[node name="Victory Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_mr3ip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(963, 545)
+texture = ExtResource("1_fniq1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -40.5
+offset_right = 472.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_fbgg7")
+text = "VICTORY!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="Play_Again" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Play Again"
+
+[node name="Main_Menu_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Main Menu"
+
+[node name="Credits_Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+text = "Credits"
+
+[node name="Victory sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_38gp8")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play_Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Main_Menu_Button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Credits_Button" to="." method="_on_credits_button_pressed"]

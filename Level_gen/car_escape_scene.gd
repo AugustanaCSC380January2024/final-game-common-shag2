@@ -17,7 +17,7 @@ func _process(delta):
 	if filled_cans == num_gas_cans_to_win:
 		end_game_timer.start()
 		car_sound.play()
-		SignalManager.emit_signal("win_game")
+		end_game_timer.start()
 
 
 func _on_interactable_body_entered(body):
@@ -27,7 +27,8 @@ func fill_car():
 	filled_cans += 1
 
 func _on_end_game_timer_timeout():
-	pass # Replace with function body.
+	
+	get_tree().change_scene_to_file("res://Menu_Scenes/victory_screen.tscn")
 
 func set_cans_to_win():
 	if SignalManager.difficulty == 1:
