@@ -6,3 +6,5 @@ signal win_game
 signal grunt_death_sound
 signal twig_detection_timer
 signal twig_player_position(player_position : Vector3)
+signal easy_mode
+signal hard_mode

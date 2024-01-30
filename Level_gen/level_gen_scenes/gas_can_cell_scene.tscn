@@ -3,14 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_o7a64"]
 [ext_resource type="Script" path="res://Level_gen/level_gen_scenes/gas_can_cell_scene.gd" id="1_okyno"]
 [ext_resource type="PackedScene" uid="uid://4mghqsqpxofv" path="res://Assets_and_textures/Tools/Gas_can/scene.gltf" id="2_eee1y"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_ui5lq"]
 [ext_resource type="PackedScene" uid="uid://be12vhu6nrub3" path="res://Assets_and_textures/Particles/explosion_particles.tscn" id="4_rsy0f"]
 [ext_resource type="AudioStream" uid="uid://ddk4x637eb7s6" path="res://Assets_and_textures/Audio/explosion.mp3" id="5_skm30"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
-albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_ubmjl"]
-material = SubResource("StandardMaterial3D_3pnyy")
+material = ExtResource("2_ui5lq")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_plo82"]
@@ -32,6 +30,7 @@ size = Vector3(6, 8, 4)
 script = ExtResource("1_okyno")
 
 [node name="Gas_Can_Cell" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_ui5lq")
 mesh = SubResource("BoxMesh_ubmjl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Gas_Can_Cell"]

@@ -10,6 +10,7 @@ var player = null
 @onready var anim_tree = $Animation_State_Machine
 @onready var bullet_coords = $Heavy_Soldier_Master_Scene/RootNode/AKM_scene/Bullet_Coords
 @onready var shooting_timer = $shooting_timer
+@onready var enemy_hit_sound = $"Enemy Hit Sound"
 
 @onready var shoot_sound = $ShootSound
 
@@ -20,8 +21,8 @@ var alert : bool = false
 var state_machine
 var is_aiming : bool
 var is_half_health : bool
-var target_range : float = 18.8
-var buffer_distance : float = 5
+var target_range : float = 25.0
+var buffer_distance : float = 10
 
 var current_health: int:
 	set(health_in):
@@ -35,7 +36,7 @@ var current_health: int:
 			anim_tree.set("parameters/conditions/is_dead", true)
 
 
-const SPEED = 2.0
+const SPEED = 4.0
 
 func _ready():
 	player = get_node(player_path)
@@ -58,6 +59,8 @@ func _process(delta):
 			player_finder.set_target_position(player.global_transform.origin)
 			var next_nav_point = player_finder.get_next_path_position()
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			if !is_target_in_buffer_distance():
+				anim_tree.set("parameters/conditions/Left_Buffer", true)
 		"Dying":
 			pass
 	
@@ -96,7 +99,6 @@ func _on_line_of_sight_body_entered(body):
 		print("I See You")
 		if player != null:
 			shooting_timer.start()
-			
 		else:
 			print("player null???")
 
@@ -117,6 +119,6 @@ func _on_animation_state_machine_animation_finished(anim_name):
 func _on_collision_area_box_area_entered(area):
 	if area.is_in_group("bullet_area"):
 		current_health -= 18
-		print("enemy been shot")
+		enemy_hit_sound.play()
 		#queue_free()
 		#remove_child(self)

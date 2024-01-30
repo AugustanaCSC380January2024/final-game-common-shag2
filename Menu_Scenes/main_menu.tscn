@@ -28,7 +28,7 @@ texture = ExtResource("2_txtr2")
 [node name="Main_Menu_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ycaf2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Menu Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -44,30 +44,65 @@ grow_vertical = 0
 scale = Vector2(1.3, 1.3)
 theme_override_constants/separation = 20
 
-[node name="Play Button" type="Button" parent="VBoxContainer"]
+[node name="Play Button" type="Button" parent="Menu Container"]
 layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 text = "Play
 "
 
-[node name="Options Button" type="Button" parent="VBoxContainer"]
+[node name="Options Button" type="Button" parent="Menu Container"]
 layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 text = "Options"
 
-[node name="Credits Button" type="Button" parent="VBoxContainer"]
+[node name="Credits Button" type="Button" parent="Menu Container"]
 layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 text = "Credits
 "
 
-[node name="Quit Button" type="Button" parent="VBoxContainer"]
+[node name="Quit Button" type="Button" parent="Menu Container"]
 layout_mode = 2
 theme = SubResource("Theme_fbgg7")
 text = "Quit
 "
 
-[connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits Button" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[node name="Mode Containors" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 270.0
+offset_top = 232.0
+offset_right = 850.0
+offset_bottom = 348.0
+theme_override_constants/separation = 50
+
+[node name="Mode Container" type="HBoxContainer" parent="Mode Containors"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Easy Mode Button" type="Button" parent="Mode Containors/Mode Container"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+disabled = true
+text = "Easy Mode"
+
+[node name="Hard Mode Button" type="Button" parent="Mode Containors/Mode Container"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+disabled = true
+text = "Hard Mode
+"
+
+[node name="Back To Main" type="Button" parent="Mode Containors"]
+layout_mode = 2
+theme = SubResource("Theme_fbgg7")
+disabled = true
+text = "Back To Main Menu"
+
+[connection signal="pressed" from="Menu Container/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu Container/Options Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Menu Container/Credits Button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Menu Container/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Mode Containors/Mode Container/Easy Mode Button" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="Mode Containors/Mode Container/Hard Mode Button" to="." method="_on_hard_mode_button_pressed"]
+[connection signal="pressed" from="Mode Containors/Back To Main" to="." method="_on_back_to_main_pressed"]

@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://0swvrc55l8j5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbkbt"]
-albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="1_klxyu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ph7ci"]
-material = SubResource("StandardMaterial3D_sbkbt")
+material = ExtResource("1_klxyu")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4pd4"]
@@ -13,6 +12,7 @@ data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5
 [node name="Level_Gen_Empty_Cell" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_klxyu")
 mesh = SubResource("BoxMesh_ph7ci")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]

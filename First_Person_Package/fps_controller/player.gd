@@ -19,7 +19,7 @@ signal turn_to_player
 @onready var player_hitbox = $Player_Hitbox
 @onready var pause_menu = $"Head/Camera3D/Pause Menu"
 @onready var healed = $Healed
-
+@onready var player_hit_sound = $"Player Hit Sound"
 @onready var death_sound_grunt = $"Death Sound Grunt"
 var is_paused : bool = false
 
@@ -212,8 +212,10 @@ func uncrouch(delta):
 func _on_player_hitbox_area_entered(area):
 	if area.is_in_group("bullet_area_collidor"):
 		current_health += -13
+		player_hit_sound.play()
 	if area.is_in_group("bullet_area_762"):
 		current_health += -18
+		player_hit_sound.play()
 	#if area.is_in_group("twig_cell_area"):
 	#	player_body.add_to_group("Twig_Snapped")
 	#	print("Twig Snapped Group Added")

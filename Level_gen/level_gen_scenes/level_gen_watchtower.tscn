@@ -1,12 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://yuxuqb4xyr7d"]
 
 [ext_resource type="PackedScene" uid="uid://c4g8thtv3qcmv" path="res://Assets_and_textures/BuildIngs/WatchTower/WatchTower_scene.gltf" id="1_fedf7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbkbt"]
-albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_k6cdi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8fo2l"]
-material = SubResource("StandardMaterial3D_sbkbt")
+material = ExtResource("2_k6cdi")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rlr8r"]
@@ -24,6 +22,7 @@ data = PackedVector3Array(-5, 15, 5, 5, 15, 5, -5, -15, 5, 5, 15, 5, 5, -15, 5, 
 transform = Transform3D(0.019, 0, 0, 0, -8.30516e-10, 0.019, 0, -0.019, -8.30516e-10, 0, -1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+material_override = ExtResource("2_k6cdi")
 mesh = SubResource("BoxMesh_8fo2l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]

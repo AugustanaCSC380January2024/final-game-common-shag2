@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://snqt6qj5h2rt"]
 
 [ext_resource type="Script" path="res://Level_gen/Level_Generation.gd" id="1_6vgfj"]
-[ext_resource type="PackedScene" uid="uid://ejdqqkiehl7g" path="res://Level_gen/watch_tower_scene.tscn" id="2_2v2fa"]
+[ext_resource type="PackedScene" uid="uid://yuxuqb4xyr7d" path="res://Level_gen/level_gen_scenes/level_gen_watchtower.tscn" id="2_a5tt6"]
 [ext_resource type="PackedScene" uid="uid://2ku55c5ep277" path="res://Level_gen/level_gen_scenes/level_gen_tree_scene.tscn" id="3_ic1ue"]
 [ext_resource type="PackedScene" uid="uid://b826fqxrcksge" path="res://Level_gen/level_gen_scenes/level_gen_grass.tscn" id="4_of4ar"]
 [ext_resource type="PackedScene" uid="uid://chag7ux4a1rp3" path="res://Level_gen/level_gen_scenes/level_gen_bush.tscn" id="5_psf00"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqvhpe43876vf" path="res://Level_gen/level_gen_scenes/level_gen_health_box.tscn" id="11_6cvsq"]
 [ext_resource type="MeshLibrary" uid="uid://gvtqoqqmmchf" path="res://Mesh_Libraries/level_Gen_Cells_Library_4.tres" id="12_nw75v"]
 [ext_resource type="PackedScene" uid="uid://cwxwoy4msjxrh" path="res://First_Person_Package/fps_controller/player.tscn" id="13_0psun"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="14_c6kv1"]
 [ext_resource type="AudioStream" uid="uid://bkxj1er1xrkal" path="res://Music/Royalty Free Copyright Safe Music.mp3" id="14_h8r1g"]
 [ext_resource type="PackedScene" uid="uid://bfbwcp8k0ixua" path="res://Level_gen/car_escape_scene.tscn" id="15_qcs15"]
 [ext_resource type="PackedScene" uid="uid://xhsr2a75o6xi" path="res://Characters/Enemy_Resources/Heavy_soldier/Heavy_Soldier_Character.tscn" id="16_5246g"]
@@ -39,13 +40,10 @@ agent_radius = 5.0
 agent_max_climb = 4.0
 agent_max_slope = 80.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij376"]
-albedo_color = Color(1, 0.2, 1, 1)
-
 [node name="Level_Gen" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 13)
 script = ExtResource("1_6vgfj")
-watchtower = ExtResource("2_2v2fa")
+watchtower = ExtResource("2_a5tt6")
 tree_cell = ExtResource("3_ic1ue")
 grass = ExtResource("4_of4ar")
 bush = ExtResource("5_psf00")
@@ -77,10 +75,11 @@ navigation_mesh = SubResource("NavigationMesh_ocv6q")
 
 [node name="Ground" type="CSGBox3D" parent="NavRegion_Pathfinding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-material_override = SubResource("StandardMaterial3D_ij376")
+material_override = ExtResource("14_c6kv1")
 snap = 1.0
 use_collision = true
 size = Vector3(200, 1, 200)
+material = ExtResource("14_c6kv1")
 
 [node name="GridMap" type="GridMap" parent="NavRegion_Pathfinding/Ground"]
 mesh_library = ExtResource("12_nw75v")

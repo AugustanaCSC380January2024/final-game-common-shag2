@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" path="res://Level_gen/level_gen_scenes/level_gen_health_box.gd" id="1_6kter"]
 [ext_resource type="PackedScene" uid="uid://icwbfgy8bw4f" path="res://Assets_and_textures/Obstacles/Wooden_box_scene.gltf" id="1_eh4st"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_n6l6g"]
 [ext_resource type="PackedScene" uid="uid://dg83i6q42a0pw" path="res://Assets_and_textures/Tools/Health_Kit/health_kit_scene.tscn" id="2_pnx68"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pnyy"]
-albedo_color = Color(0.352941, 0.423529, 0.0588235, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_pv66b"]
-material = SubResource("StandardMaterial3D_3pnyy")
+material = ExtResource("2_n6l6g")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ueq6e"]
@@ -23,7 +21,7 @@ data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5
 script = ExtResource("1_6kter")
 
 [node name="Cell_With_Item" type="MeshInstance3D" parent="." groups=["item_box_cell"]]
-material_override = SubResource("StandardMaterial3D_3pnyy")
+material_override = ExtResource("2_n6l6g")
 mesh = SubResource("BoxMesh_pv66b")
 skeleton = NodePath("../..")
 

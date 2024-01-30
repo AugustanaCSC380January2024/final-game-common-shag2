@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfbwcp8k0ixua"]
+[gd_scene load_steps=7 format=3 uid="uid://bfbwcp8k0ixua"]
 
 [ext_resource type="PackedScene" uid="uid://ck8hvv2dijc0i" path="res://Level_gen/level_gen_scenes/military_car.tscn" id="1_lpvhj"]
 [ext_resource type="Script" path="res://Level_gen/car_escape_scene.gd" id="1_pn7fc"]
+[ext_resource type="AudioStream" uid="uid://cbajq8pmedild" path="res://Assets_and_textures/Audio/car.mp3" id="3_xawr8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_733vs"]
 size = Vector3(12, 10, 22)
@@ -35,4 +36,11 @@ disable_mode = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4ahkj")
 
+[node name="Car Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xawr8")
+
+[node name="End Game Timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Interactable" to="." method="_on_interactable_body_entered"]
+[connection signal="timeout" from="End Game Timer" to="." method="_on_end_game_timer_timeout"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://4thm0iq5h6ua"]
+
+[ext_resource type="Script" path="res://Spawn Cell.gd" id="1_lsvx0"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_rj6c6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ph7ci"]
+material = ExtResource("2_rj6c6")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t4pd4"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
+
+[node name="Level Gen Spawn Cell" type="Node3D"]
+script = ExtResource("1_lsvx0")
+
+[node name="Level_Gen_Empty_Cell" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level_Gen_Empty_Cell"]
+material_override = ExtResource("2_rj6c6")
+mesh = SubResource("BoxMesh_ph7ci")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level_Gen_Empty_Cell/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Gen_Empty_Cell/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_t4pd4")
+
+[node name="Spawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
