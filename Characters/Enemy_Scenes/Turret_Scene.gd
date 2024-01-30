@@ -7,9 +7,10 @@ signal death_sound_signal
 @onready var shooting_timer = $Shooting_Timer
 @onready var bullet_coordinates = $Bullet_coordinates
 @onready var pistol_shot = $Pistol_Shot
-
+@onready var explosion_sfx = $"Explosion sfx"
+@onready var death_timer = $Death_timer
 @onready var shooting_turret_timer = $shooting_turret_timer
-
+@onready var explosion_particles = $ExplosionParticles
 @onready var line_of_sight = $Line_of_sight
 
 @export var nine_mm_scene : PackedScene
@@ -60,9 +61,15 @@ func shoot_player(player_position: Vector3):
 	pistol_shot.play()
 
 func remove_turret() -> void:
-	SignalManager.grunt_death_sound.emit()
-	remove_child(self)
-	queue_free()
+	if !explosion_particles.emitting:
+		explosion_particles.emitting = true
+	if !explosion_sfx.playing:
+		explosion_sfx.play()
+		death_timer.start()
+#	remove_child(self)
+#	queue_free()
+	#SignalManager.grunt_death_sound.emit()
+
 
 
 
@@ -123,3 +130,11 @@ func set_start_health():
 		current_health = 175
 	elif SignalManager.difficulty == 3:
 		current_health = 225
+
+
+func _on_death_timer_timeout():
+	turret.queue_free()
+	remove_child(turret)
+	remove_child(self)
+	queue_free()
+

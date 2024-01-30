@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqgfs35piavbt"]
+[gd_scene load_steps=19 format=3 uid="uid://bqgfs35piavbt"]
 
 [ext_resource type="Script" path="res://Characters/Enemy_Scenes/Turret_Scene.gd" id="1_ifagj"]
 [ext_resource type="PackedScene" uid="uid://croga7shem1ub" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/9_mm_bullet.tscn" id="2_pwrqx"]
 [ext_resource type="Material" uid="uid://bt1yi4qhslfyh" path="res://Assets_and_textures/Materials/metal_material/materials/diamondPlateAluminum/diamondAluminum.tres" id="3_58suq"]
+[ext_resource type="PackedScene" uid="uid://be12vhu6nrub3" path="res://Assets_and_textures/Particles/explosion_particles.tscn" id="5_xgqqp"]
+[ext_resource type="AudioStream" uid="uid://ddk4x637eb7s6" path="res://Assets_and_textures/Audio/explosion.mp3" id="6_wv45v"]
 [ext_resource type="AudioStream" uid="uid://je5pcgpw3oq6" path="res://Characters/Enemy_Resources/dumb_grunt/Bullet/9mm-pistol_sound.mp3" id="14_lj203"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r6t4o"]
@@ -125,8 +127,18 @@ mesh = SubResource("CylinderMesh_nkn2u")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6.74252, 14.7163)
 shape = SubResource("ConvexPolygonShape3D_fxvk6")
 
+[node name="ExplosionParticles" parent="." instance=ExtResource("5_xgqqp")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.535996, 0)
+
+[node name="Death_timer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="Explosion sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_wv45v")
+
 [connection signal="timeout" from="shooting_turret_timer" to="." method="_on_shooting_turret_timer_timeout"]
 [connection signal="area_entered" from="Enemy_Hitbox_Area" to="." method="_on_enemy_hitbox_area_area_entered"]
 [connection signal="area_exited" from="Enemy_Hitbox_Area" to="." method="_on_enemy_hitbox_area_area_exited"]
 [connection signal="body_entered" from="Line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="Line_of_sight" to="." method="_on_line_of_sight_body_exited"]
+[connection signal="timeout" from="Death_timer" to="." method="_on_death_timer_timeout"]

@@ -34,7 +34,7 @@ const SPEED = 4.0
 
 func _ready():
 	player = get_node(player_path)
-	current_health = starting_health
+	set_starting_health()
 	state_machine = anim_tree.get("parameters/playback")
 	anim_tree.set("parameters/conditions/down_to_aiming", true)
 	is_aiming = true
@@ -113,3 +113,11 @@ func _on_collision_area_box_area_entered(area):
 		enemy_hit_sound.play()
 		#queue_free()
 		#remove_child(self)
+
+func set_starting_health():
+	if SignalManager.difficulty == 1:
+		current_health = 200
+	elif SignalManager.difficulty == 2:
+		current_health = 250
+	elif SignalManager.difficulty == 3:
+		current_health = 300
