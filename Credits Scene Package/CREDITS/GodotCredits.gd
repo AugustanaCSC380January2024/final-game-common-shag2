@@ -198,10 +198,19 @@ var credits = [
 		"SOFTWARE."
 		
 	],[
+		"As this is my final project",
+		"For my final class at Augustana",
+		"Thank you to all who has helped me",
 		"Special thanks",
-		"My parents",
-		"My friends",
-		"My pet rabbit"
+		"Mom and Dad",
+		"Dr.Stonedahl",
+		"My Classmates",
+		"The Entire Department",
+		"Energy Drinks",
+		"And Finally",
+		"You"
+		
+		
 	]
 ]
 

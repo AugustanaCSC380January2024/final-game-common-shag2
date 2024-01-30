@@ -2,9 +2,7 @@ extends Node3D
 
 signal death_sound_signal
 
-@onready var field_of_view = $Field_Of_View
 @onready var turret = $"."
-@onready var shooting_timer = $Shooting_Timer
 @onready var bullet_coordinates = $Bullet_coordinates
 @onready var pistol_shot = $Pistol_Shot
 @onready var explosion_sfx = $"Explosion sfx"

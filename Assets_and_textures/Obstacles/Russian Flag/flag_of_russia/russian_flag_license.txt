@@ -1,0 +1,11 @@
+Model Information:
+* title:	Flag of Russia
+* source:	https://sketchfab.com/3d-models/flag-of-russia-fc39c5157460408194641bab70c09d99
+* author:	Wittybacon (https://sketchfab.com/wittybacon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Flag of Russia" (https://sketchfab.com/3d-models/flag-of-russia-fc39c5157460408194641bab70c09d99) by Wittybacon (https://sketchfab.com/wittybacon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

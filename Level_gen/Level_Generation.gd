@@ -19,12 +19,12 @@ extends Node3D
 @onready var medium_mode_timer = $"Medium Mode Timer"
 @onready var easy_mode_timer = $"Easy Mode Timer"
 @onready var ground = $NavRegion_Pathfinding/Ground
-@onready var player1 = $NavRegion_Pathfinding/CharacterBody3D
 @onready var nav_region_pathfinding = $NavRegion_Pathfinding
 @onready var spawn_1 = $"Spawn Locations/Spawn1"
 @onready var spawn_2 = $"Spawn Locations/Spawn2"
 @onready var spawn_3 = $"Spawn Locations/Spawn3"
 @onready var spawn_4 = $"Spawn Locations/Spawn4"
+
 
 
 var x_bound : int
@@ -137,7 +137,7 @@ func pick_cell(z_coord: int, x_coord: int) -> Node3D:
 			return child
 		elif picked == 6:
 			var child = gas_can.instantiate()
-			child.player = player1
+			#child.player = player1
 			add_child(child)
 			return child
 		elif picked == 7:
@@ -248,7 +248,7 @@ func set_cell(picked : int, z_coord: int, x_coord: int):
 		child.global_position = Vector3i(x_coord,0,z_coord)
 	elif picked == 6:
 		var child = gas_can.instantiate()
-		child.player = player1
+		#child.player = player1
 		add_child(child)
 		child.global_position = Vector3i(x_coord,0,z_coord)
 	elif picked == 7:

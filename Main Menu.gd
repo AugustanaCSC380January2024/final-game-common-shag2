@@ -10,7 +10,7 @@ extends Control
 @onready var hard_mode_button = $"Mode Containors/Mode Container/Hard Mode Button"
 @onready var back_to_main = $"Mode Containors/Back To Main"
 @onready var gameplay_controls = $"Gameplay Controls"
-@onready var back_to_main2 = $"Gameplay Controls/HBoxContainer/VBoxContainer/Back to main"
+@onready var back_to_main2 = $"Gameplay Controls/HBoxContainer/VBoxContainer/Back to main2"
 
 
 

@@ -1,7 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://b826fqxrcksge"]
+[gd_scene load_steps=5 format=3 uid="uid://b826fqxrcksge"]
 
-[ext_resource type="PackedScene" uid="uid://dwnkotomljeag" path="res://Cell_Scenes/grass_cell.tscn" id="1_bgvxm"]
+[ext_resource type="PackedScene" uid="uid://ii36iuu13w44" path="res://Assets_and_textures/Landscape/Grass/Grass_02_Scene.gltf" id="2_fr3qr"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="2_w3dpv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k42oa"]
+material = ExtResource("2_w3dpv")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nr5vj"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
 
 [node name="Level_Gen_Grass" type="Node3D"]
 
-[node name="Grass_Cell" parent="." instance=ExtResource("1_bgvxm")]
+[node name="Grass_Cell" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_w3dpv")
+mesh = SubResource("BoxMesh_k42oa")
+
+[node name="Tall_Grass_1" parent="Grass_Cell" instance=ExtResource("2_fr3qr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.16045, 0, 0)
+
+[node name="Tall_Grass_2" parent="Grass_Cell" instance=ExtResource("2_fr3qr")]
+transform = Transform3D(-1.56424, 0, -2.55992, 0, 3, 0, 2.55992, 0, -1.56424, -0.316867, 0, 0)
+
+[node name="Tall_Grass_3" parent="Grass_Cell" instance=ExtResource("2_fr3qr")]
+transform = Transform3D(-2.88708, 0, 0.815329, 0, 3, 0, -0.815329, 0, -2.88708, 1.07164, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass_Cell"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass_Cell/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nr5vj")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56fvyku5smo8"]
+
+[ext_resource type="PackedScene" uid="uid://b2muwo2kecpbc" path="res://Assets_and_textures/Obstacles/Russian Flag/flag_of_russia/russian_flag_scene.gltf" id="1_c6omj"]
+
+[node name="Russian_Flag" instance=ExtResource("1_c6omj")]

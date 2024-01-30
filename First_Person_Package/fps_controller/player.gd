@@ -119,6 +119,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Move_Right"):
 		input_dir.x = 1
 		#print("right")
+	if Input.is_action_pressed("Run_Forwards"):
+		input_dir.y = -3
+	if Input.is_action_pressed("Run_Backwards"):
+		input_dir.y = 3
+	if Input.is_action_pressed("Run_Left"):
+		input_dir.x = -3
+	if Input.is_action_pressed("Run_Right"):
+		input_dir.x = 3
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if input_dir == Vector2():
@@ -149,7 +157,7 @@ func _physics_process(delta):
 				print("Gas Can Grabbed")
 				holding_gas_can = true
 				gas_can_standalone.visible = true
-				healed.play()
+				
 				
 				deposit_gas_can_to_car.emit()
 				#SignalManager.emit_signal("pick_up_gas_can")
@@ -165,6 +173,7 @@ func _physics_process(delta):
 			if overlap.is_in_group("health_pickup_area"):
 				pick_up_health.emit()
 				current_health += health_pack_heal
+				healed.play()
 
 	if is_on_floor():
 		footstep_sound(true)

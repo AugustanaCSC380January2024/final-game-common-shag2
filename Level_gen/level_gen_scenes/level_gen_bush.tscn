@@ -1,7 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://chag7ux4a1rp3"]
+[gd_scene load_steps=6 format=3 uid="uid://chag7ux4a1rp3"]
 
-[ext_resource type="PackedScene" uid="uid://bieapcvqpxiwm" path="res://Cell_Scenes/bush_cell.tscn" id="1_bciya"]
+[ext_resource type="Material" uid="uid://c0q43eh3lh5iy" path="res://Assets_and_textures/Materials/godot-material-mud-cracked/materials/mudCracked/mud.tres" id="1_huyl3"]
+[ext_resource type="PackedScene" uid="uid://cvw6u47iu3v3r" path="res://Assets_and_textures/Landscape/Bushes/Hi_Bush.gltf" id="2_kqu2y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rlob"]
+material = ExtResource("1_huyl3")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6jah4"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wq2gf"]
+data = PackedVector3Array(-5, 0.5, 5, 5, 0.5, 5, -5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, 5, 0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, 5, -5, 0.5, -5, 5, 0.5, -5, -5, -0.5, 5, 5, -0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5)
 
 [node name="Level_Gen_Bush" type="Node3D"]
 
-[node name="Bush_Cell" parent="." instance=ExtResource("1_bciya")]
+[node name="Bush_Cell" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_huyl3")
+mesh = SubResource("BoxMesh_4rlob")
+
+[node name="Bush" parent="Bush_Cell" instance=ExtResource("2_kqu2y")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 2.016, 107.5, 1.251)
+
+[node name="Blocker" type="Area3D" parent="Bush_Cell/Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2964, 0)
+disable_mode = 1
+
+[node name="Sight_Blocker_Collidor" type="CollisionShape3D" parent="Bush_Cell/Bush/Blocker"]
+shape = SubResource("CylinderShape3D_6jah4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bush_Cell"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bush_Cell/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wq2gf")
