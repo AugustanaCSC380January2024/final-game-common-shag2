@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Main Menu.gd" id="1_ee43w"]
 [ext_resource type="Texture2D" uid="uid://dx77ymclnfche" path="res://Menu_Scenes/Images For Menus/Rambo Russian Rampage.png" id="2_txtr2"]
+[ext_resource type="AudioStream" uid="uid://cck652lufqbqk" path="res://Music/💣 Copyright Free Military Music -  Legionnaire  by @Scott Buckley.mp3" id="3_c2u10"]
 [ext_resource type="FontFile" uid="uid://cth4sjrky3sxu" path="res://Assets_and_textures/Fonts/SingleDay-Regular.ttf" id="3_db443"]
-[ext_resource type="AudioStream" uid="uid://crltv15p50qof" path="res://Music/Russia National anthem.mp3" id="4_ycaf2"]
 [ext_resource type="FontFile" uid="uid://nlbjy1mmrpjh" path="res://Assets_and_textures/Fonts/OpenSans-SemiBold.ttf" id="6_s7tge"]
 
 [sub_resource type="Theme" id="Theme_fbgg7"]
@@ -39,7 +39,7 @@ offset_bottom = 1080.0
 texture = ExtResource("2_txtr2")
 
 [node name="Main_Menu_Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ycaf2")
+stream = ExtResource("3_c2u10")
 
 [node name="Menu Container" type="VBoxContainer" parent="."]
 layout_mode = 1

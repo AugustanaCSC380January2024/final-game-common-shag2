@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cck652lufqbqk"
+path="res://.godot/imported/💣 Copyright Free Military Music -  Legionnaire  by @Scott Buckley.mp3-c5b4ef9477d7dbbe49827deba1ed752a.mp3str"
+
+[deps]
+
+source_file="res://Music/💣 Copyright Free Military Music -  Legionnaire  by @Scott Buckley.mp3"
+dest_files=["res://.godot/imported/💣 Copyright Free Military Music -  Legionnaire  by @Scott Buckley.mp3-c5b4ef9477d7dbbe49827deba1ed752a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

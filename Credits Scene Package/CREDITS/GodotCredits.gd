@@ -122,8 +122,10 @@ var credits = [
 		"Music",
 		"Background Music",
 		"By Royalty Free Copyright Music",
-		"Star Spangled Banner",
-		"Russian National Anthem"
+		"[Copyright Free Trailer Music] -  Resurgence  by @Ghostrifter Official",
+		"Copyright Free Military Music -  Legionnaire  by @Scott Buckley",
+		"Epic Non Copyrighted Music "
+		
 	],[
 		"Sound Effects",
 		"Stick Snap 2 by Pixabay",

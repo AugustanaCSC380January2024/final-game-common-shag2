@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Credits Scene Package/CREDITS/GodotCredits.gd" id="1_tm5ul"]
 [ext_resource type="PackedScene" uid="uid://bsxpfhtqsuf8h" path="res://Menu_Scenes/credits_screen.tscn" id="2_ky0et"]
-[ext_resource type="AudioStream" uid="uid://dgm1xvwuok0tm" path="res://Music/The Star-Spangled Banner   The U.S. National Anthem.mp3" id="3_w2mnu"]
+[ext_resource type="AudioStream" uid="uid://cp0yxnioykrfj" path="res://Music/🎥 [Copyright Free Trailer Music] -  Resurgence  by @Ghostrifter Official  🇳🇱.mp3" id="3_t77hu"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -42,4 +42,4 @@ size_flags_horizontal = 3
 horizontal_alignment = 1
 
 [node name="Anthem" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_w2mnu")
+stream = ExtResource("3_t77hu")

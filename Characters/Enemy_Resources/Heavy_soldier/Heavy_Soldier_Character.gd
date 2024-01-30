@@ -27,6 +27,7 @@ var current_health: int:
 			#Set_hit_animation
 		if current_health <= 0:
 			SignalManager.grunt_death_sound.emit()
+			shooting_timer.stop()
 			anim_tree.set("parameters/conditions/is_dead", true)
 
 
@@ -40,7 +41,6 @@ func _ready():
 	is_aiming = true
 func _process(delta):
 	velocity = Vector3.ZERO
-	
 	match state_machine.get_current_node():
 		"Down_To_Aim":
 			pass
